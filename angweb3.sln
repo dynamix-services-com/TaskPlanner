@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "angweb3", "angweb3\angweb3.csproj", "{75464978-2140-4E22-A537-E01ED26D7A99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75464978-2140-4E22-A537-E01ED26D7A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75464978-2140-4E22-A537-E01ED26D7A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75464978-2140-4E22-A537-E01ED26D7A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75464978-2140-4E22-A537-E01ED26D7A99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D49A01D4-9877-43E9-8A73-01B8A5A22805}
+	EndGlobalSection
+EndGlobal
