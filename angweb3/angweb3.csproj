@@ -92,6 +92,7 @@
     <Content Include="assets\js\npm.js" />
     <Content Include="assets\js\respond.min.js" />
     <Content Include="charts.html" />
+    <Content Include="client.html" />
     <Content Include="css\main.css" />
     <Content Include="css\util.css" />
     <Content Include="developer.html" />
@@ -113,6 +114,7 @@
     <Content Include="login.html" />
     <Content Include="panels.html" />
     <Content Include="route.html" />
+    <Content Include="tasks.html" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
     <Content Include="vendor\animsition\css\animsition.min.css" />
@@ -233,6 +235,7 @@
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
