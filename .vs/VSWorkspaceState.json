@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\angweb3",
+    "\\angweb3\\assets",
+    "\\angweb3\\assets\\js",
+    "\\angweb3\\js"
   ],
+  "SelectedNode": "\\angweb3.sln",
   "PreviewInSolutionExplorer": false
 }
