@@ -66,5 +66,51 @@
         $(thisAlert).removeClass('alert-validate');
     }
     
-    
+
+
+
+    // Attach a submit handler to the form
+    $("#loginForm").submit(function (event) {
+
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var $form = $(this),
+            login = $form.find("input[name='login']").val(),
+            pass = $form.find("input[name='pass']").val(),
+            url = $form.attr("action");
+
+        // Send the data using post
+        var posting = $.post(url, { Login: login, Password: pass });
+
+        // Put the results in a div
+        posting.done(function (data) {
+            var json = JSON.parse(data)
+            if (json.error !== null) {
+                $("#note").html(json.error);
+            } else {
+                if (json.Type = "Client") {
+                    document.location = "index.html";
+                } else if (json.Type = "Manager") {
+                    document.location = "index.html";
+                } else if (json.Type = "Manager") {
+                    document.location = "developer.html";
+                } 
+                
+            }
+            
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
 })(jQuery);

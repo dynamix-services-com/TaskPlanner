@@ -110,3 +110,5 @@ C:\Users\rimyt\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Release
 C:\Users\rimyt\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Release\angweb3.csproj.CopyComplete
 C:\Users\rimyt\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Release\angweb3.dll
 C:\Users\rimyt\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Release\angweb3.pdb
+C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\bin\angweb3.XmlSerializers.dll
+C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Release\angweb3.XmlSerializers.dll
