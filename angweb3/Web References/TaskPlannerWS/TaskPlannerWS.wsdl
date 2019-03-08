@@ -18,6 +18,35 @@
       </complexType>
       <element name="Root" type="tns:Root" />
     </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x50001" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x50001" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="Root50001">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" default="0" name="ID" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Status" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Title" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Desciption" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Date_Creation" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Cree_Par" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Client" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Date_Echeance" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Date_Validation" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Validee_Par" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="No_Projet" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Nom_Projet" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Nom_Client" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Nom_Cree_Par" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Image" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Nom_Validee_Par" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="Root" mixed="true">
+        <sequence>
+          <element minOccurs="1" maxOccurs="unbounded" name="Root50001" type="tns:Root50001" />
+        </sequence>
+      </complexType>
+      <element name="Root" type="tns:Root" />
+    </schema>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS" xmlns="http://www.w3.org/2001/XMLSchema">
       <element name="Authentification">
         <complexType>
@@ -36,6 +65,21 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetRequestList">
+        <complexType>
+          <sequence>
+            <element xmlns:q3="urn:microsoft-dynamics-nav/xmlports/x50001" minOccurs="1" maxOccurs="1" name="requestsXml" type="q3:Root" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRequestList_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+            <element xmlns:q4="urn:microsoft-dynamics-nav/xmlports/x50001" minOccurs="1" maxOccurs="1" name="requestsXml" type="q4:Root" />
+          </sequence>
+        </complexType>
+      </element>
     </schema>
   </types>
   <message name="Authentification">
@@ -44,10 +88,20 @@
   <message name="Authentification_Result">
     <part name="parameters" element="tns:Authentification_Result" />
   </message>
+  <message name="GetRequestList">
+    <part name="parameters" element="tns:GetRequestList" />
+  </message>
+  <message name="GetRequestList_Result">
+    <part name="parameters" element="tns:GetRequestList_Result" />
+  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
       <output name="Authentification_Result" message="tns:Authentification_Result" />
+    </operation>
+    <operation name="GetRequestList">
+      <input name="GetRequestList" message="tns:GetRequestList" />
+      <output name="GetRequestList_Result" message="tns:GetRequestList_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -58,6 +112,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="Authentification_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRequestList">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRequestList" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRequestList">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRequestList_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
