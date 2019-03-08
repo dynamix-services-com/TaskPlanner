@@ -75,22 +75,22 @@ namespace angweb3.TaskPlannerWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool Authentification(string login, string password, ref Root156 ressourceXml) {
+        public bool Authentification(string login, string password, ref Root ressourceXml) {
             object[] results = this.Invoke("Authentification", new object[] {
                         login,
                         password,
                         ressourceXml});
-            ressourceXml = ((Root156)(results[1]));
+            ressourceXml = ((Root)(results[1]));
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void AuthentificationAsync(string login, string password, Root156 ressourceXml) {
+        public void AuthentificationAsync(string login, string password, Root ressourceXml) {
             this.AuthentificationAsync(login, password, ressourceXml, null);
         }
         
         /// <remarks/>
-        public void AuthentificationAsync(string login, string password, Root156 ressourceXml, object userState) {
+        public void AuthentificationAsync(string login, string password, Root ressourceXml, object userState) {
             if ((this.AuthentificationOperationCompleted == null)) {
                 this.AuthentificationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAuthentificationOperationCompleted);
             }
@@ -123,6 +123,41 @@ namespace angweb3.TaskPlannerWS {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50000")]
+    public partial class Root {
+        
+        private Root156[] root156Field;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Root156")]
+        public Root156[] Root156 {
+            get {
+                return this.root156Field;
+            }
+            set {
+                this.root156Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
         }
     }
     
@@ -221,10 +256,10 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public Root156 ressourceXml {
+        public Root ressourceXml {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((Root156)(this.results[1]));
+                return ((Root)(this.results[1]));
             }
         }
     }

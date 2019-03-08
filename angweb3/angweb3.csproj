@@ -262,7 +262,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\TaskPlannerWS\Root156.datasource">
+    <Content Include="Web References\TaskPlannerWS\Root.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\TaskPlannerWS\TaskPlannerWS.wsdl" />

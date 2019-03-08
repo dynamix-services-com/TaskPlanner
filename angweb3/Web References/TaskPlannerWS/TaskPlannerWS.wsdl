@@ -11,7 +11,12 @@
           <element minOccurs="1" maxOccurs="1" name="DDC" type="string" />
         </sequence>
       </complexType>
-      <element name="Root156" type="tns:Root156" />
+      <complexType name="Root" mixed="true">
+        <sequence>
+          <element minOccurs="1" maxOccurs="unbounded" name="Root156" type="tns:Root156" />
+        </sequence>
+      </complexType>
+      <element name="Root" type="tns:Root" />
     </schema>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS" xmlns="http://www.w3.org/2001/XMLSchema">
       <element name="Authentification">
@@ -19,7 +24,7 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="login" type="string" />
             <element minOccurs="1" maxOccurs="1" name="password" type="string" />
-            <element xmlns:q1="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXml" type="q1:Root156" />
+            <element xmlns:q1="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXml" type="q1:Root" />
           </sequence>
         </complexType>
       </element>
@@ -27,7 +32,7 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
-            <element xmlns:q2="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXml" type="q2:Root156" />
+            <element xmlns:q2="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXml" type="q2:Root" />
           </sequence>
         </complexType>
       </element>
