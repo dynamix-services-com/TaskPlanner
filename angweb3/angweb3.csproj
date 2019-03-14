@@ -111,8 +111,10 @@
     <Content Include="images\avatar-01.jpg" />
     <Content Include="index.html" />
     <Content Include="js\main.js" />
+    <Content Include="js\modifTasks.js" />
     <Content Include="js\Tasks.js" />
     <Content Include="login.html" />
+    <Content Include="modifData.html" />
     <Content Include="panels.html" />
     <Content Include="route.html" />
     <Content Include="tasks.html" />
