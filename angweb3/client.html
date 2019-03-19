@@ -54,6 +54,7 @@
         <ul class="nav menu">
             <li class="active"><a href="client.html"><em class="fa fa-dashboard">&nbsp;</em> Form</a></li>
             <li><a href="tasks.html"><em class="fa fa-toggle-off">&nbsp;</em> Tasks</a></li>
+            <li><a href="modifData.html"><em class="fa fa-edit">&nbsp;</em> Edit</a></li>
             <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
@@ -95,9 +96,9 @@
                     </div>
 
                 </div>
-               
+
                 <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label>Project state</label>
                         <select id="state" class="form-control">
                             <option selected>Choose...</option>
@@ -106,7 +107,7 @@
                             <option>bill</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label>Developer team</label>
                         <select id="team" class="form-control">
                             <option selected>Choose...</option>
@@ -115,7 +116,10 @@
                             <option>XYXY</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
                         <label>Project manager</label>
                         <select id="manager" class="form-control">
                             <option selected>Choose...</option>
@@ -123,10 +127,16 @@
                             <option>YYY</option>
                         </select>
                     </div>
+                    <div class="form-group col-md-6">
+                        <div class="custom-file">
+                            <label class="custom-file-label">Choose file...</label>
+                            <input type="file" class="custom-file-input" required>
+                        </div>
+                    </div>
+
                 </div>
-                   
-                <center><button type="submit" class="btn btn-primary"> Add </button></center><br />
             </form>
+            <button type="submit" class="btn btn-primary"> Add </button><br /><br />
         </div>
     </div>
     <script src="assets/js/jquery-1.11.1.min.js"></script>
