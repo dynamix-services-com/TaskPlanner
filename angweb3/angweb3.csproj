@@ -198,7 +198,6 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="assets\sass\.sass-cache\deff34d1f5b7167181b556002c25068d6adc024d\styles.scssc" />
     <Content Include="assets\sass\styles.scss" />
     <Content Include="assets\tables\data1.json" />
     <Content Include="assets\tables\data2.json" />
