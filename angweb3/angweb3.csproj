@@ -88,6 +88,7 @@
     <Content Include="assets\js\easypiechart.js" />
     <Content Include="assets\js\html5shiv.min.js" />
     <Content Include="assets\js\jquery-1.11.1.min.js" />
+    <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\lumino.glyphs.js" />
     <Content Include="assets\js\npm.js" />
     <Content Include="assets\js\respond.min.js" />
