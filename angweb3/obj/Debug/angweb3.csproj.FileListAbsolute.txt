@@ -222,3 +222,5 @@ C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angw
 C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angweb3.csproj.CopyComplete
 C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angweb3.dll
 C:\Users\HP\source\repos\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angweb3.pdb
+C:\TaskPlannerSolution\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angweb3.dll
+C:\TaskPlannerSolution\dynamix-services-com\TaskPlanner\angweb3\obj\Debug\angweb3.pdb
