@@ -75,6 +75,7 @@
     <Content Include="assets\css\datepicker.css" />
     <Content Include="assets\css\datepicker3.css" />
     <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\jquery.dataTables.min.css" />
     <Content Include="assets\css\styles.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
@@ -111,6 +112,7 @@
     <Content Include="images\icons\favicon.ico" />
     <Content Include="images\avatar-01.jpg" />
     <Content Include="index.html" />
+    <Content Include="js\js-sha256.js" />
     <Content Include="js\main.js" />
     <Content Include="js\modifTasks.js" />
     <Content Include="js\Tasks.js" />
@@ -149,9 +151,13 @@
     <Content Include="vendor\select2\select2.js" />
     <Content Include="vendor\select2\select2.min.css" />
     <Content Include="vendor\select2\select2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="widgets.html" />
+    <Content Include="ws\deleteRequest.aspx" />
     <Content Include="ws\Authetification.aspx" />
+    <Content Include="ws\editRequest.aspx" />
     <Content Include="ws\getRequests.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -169,12 +175,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="ws\deleteRequest.aspx.cs">
+      <DependentUpon>deleteRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\deleteRequest.aspx.designer.cs">
+      <DependentUpon>deleteRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ws\Authetification.aspx.cs">
       <DependentUpon>Authetification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ws\Authetification.aspx.designer.cs">
       <DependentUpon>Authetification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\editRequest.aspx.cs">
+      <DependentUpon>editRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\editRequest.aspx.designer.cs">
+      <DependentUpon>editRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\getRequests.aspx.cs">
       <DependentUpon>getRequests.aspx</DependentUpon>

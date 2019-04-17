@@ -80,5 +80,14 @@ getting.done(function (data) {
 $('#TaskList').on('click','tr', function (e, row, $element) {
    // console.log(row);
     console.log(DetMissDatatable.row(this).data());
-    //alert(row.ID + ' clicked');
+
+
+
+
+
+
+
+
+
+
 });

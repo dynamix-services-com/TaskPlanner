@@ -48,6 +48,9 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <File Include="assets/css/font-awesome.min.css">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
+    <File Include="assets/css/jquery.dataTables.min.css">
+      <publishTime>04/05/2019 15:08:58</publishTime>
+    </File>
     <File Include="assets/css/styles.css">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
@@ -114,6 +117,9 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <File Include="assets/js/jquery-1.11.1.min.js">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
+    <File Include="assets/js/jquery.dataTables.min.js">
+      <publishTime>04/05/2019 15:46:51</publishTime>
+    </File>
     <File Include="assets/js/lumino.glyphs.js">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
@@ -136,13 +142,13 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
     <File Include="bin/angweb3.dll">
-      <publishTime>04/05/2019 15:25:38</publishTime>
+      <publishTime>04/17/2019 11:03:26</publishTime>
     </File>
     <File Include="bin/angweb3.pdb">
-      <publishTime>04/05/2019 15:25:38</publishTime>
+      <publishTime>04/17/2019 11:03:26</publishTime>
     </File>
     <File Include="bin/angweb3.XmlSerializers.dll">
-      <publishTime>04/05/2019 15:25:39</publishTime>
+      <publishTime>04/17/2019 11:03:26</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -289,7 +295,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
     <File Include="client.html">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 14:07:04</publishTime>
     </File>
     <File Include="css/main.css">
       <publishTime>04/05/2019 15:08:58</publishTime>
@@ -507,20 +513,23 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <File Include="index.html">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
+    <File Include="js/js-sha256.js">
+      <publishTime>04/16/2019 09:54:24</publishTime>
+    </File>
     <File Include="js/main.js">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 11:10:05</publishTime>
     </File>
     <File Include="js/modifTasks.js">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/17/2019 11:03:22</publishTime>
     </File>
     <File Include="js/Tasks.js">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 12:22:54</publishTime>
     </File>
     <File Include="login.html">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 10:05:58</publishTime>
     </File>
     <File Include="modifData.html">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 15:42:56</publishTime>
     </File>
     <File Include="panels.html">
       <publishTime>04/05/2019 15:08:58</publishTime>
@@ -640,10 +649,10 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root.datasource">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 09:37:20</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root1.datasource">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/16/2019 09:37:20</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root156.datasource">
       <publishTime>03/06/2019 12:18:46</publishTime>
@@ -657,8 +666,14 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <File Include="ws/Authetification.aspx">
       <publishTime>04/05/2019 15:08:58</publishTime>
     </File>
+    <File Include="ws/deleteRequest.aspx">
+      <publishTime>04/16/2019 15:50:13</publishTime>
+    </File>
+    <File Include="ws/editRequest.aspx">
+      <publishTime>04/16/2019 14:04:36</publishTime>
+    </File>
     <File Include="ws/getRequests.aspx">
-      <publishTime>04/05/2019 15:08:58</publishTime>
+      <publishTime>04/11/2019 11:30:28</publishTime>
     </File>
   </ItemGroup>
 </Project>
