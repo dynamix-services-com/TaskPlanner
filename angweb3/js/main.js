@@ -78,7 +78,7 @@
         // Get some values from elements on the page:
         var $form = $(this),
             login = $form.find("input[name='login']").val(),
-            pass = $form.find("input[name='pass']").val(),
+            pass = sha256($form.find("input[name='pass']").val()),
             url = $form.attr("action");
 
         // Send the data using post
