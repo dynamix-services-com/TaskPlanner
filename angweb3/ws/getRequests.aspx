@@ -97,18 +97,16 @@
                                     "\"," + "\"Description\": " + "\"" + RT50001.Root50001[i].Desciption.ToString() +
                                     "\"," + "\"Image\": " + "\"" + RT50001.Root50001[i].Image.ToString() +
                                     "\"," + "\"Cree_Par\": " + "\"" + RT50001.Root50001[i].Cree_Par.ToString() +
-                                     "\"," + "\"Date_Creation\": " + "\"" + RT50001.Root50001[i].Date_Creation.ToString() +
-                                      "\"," + "\"Nom_Cree_Par\": " + "\"" + RT50001.Root50001[i].Nom_Cree_Par.ToString() +
-                                       "\"," + "\"Client\": " + "\"" + RT50001.Root50001[i].Client.ToString() +
-                                        "\"," + "\"Nom_Client\": " + "\"" + RT50001.Root50001[i].Nom_Client.ToString() +
-                                          "\"," + "\"No_Projet\": " + "\"" + RT50001.Root50001[i].No_Projet.ToString() +
-                                             "\"," + "\"Nom_Projet\": " + "\"" + RT50001.Root50001[i].Nom_Projet.ToString() +
-                                              "\"," + "\"Date_Echeance\": " + "\"" + RT50001.Root50001[i].Date_Echeance.ToString() +
-
-                                               "\"," + "\"Date_Validation\": " + "\"" + RT50001.Root50001[i].Date_Validation.ToString() +
-                                               "\"," + "\"Validee_Par\": " + "\"" + RT50001.Root50001[i].Validee_Par.ToString() +
-                                               "\"," + "\"Nom_Validee_Par\": " + "\"" + RT50001.Root50001[i].Nom_Validee_Par.ToString() +
-                                    
+                                    "\"," + "\"Date_Creation\": " + "\"" + RT50001.Root50001[i].Date_Creation.ToString() +
+                                    "\"," + "\"Nom_Cree_Par\": " + "\"" + RT50001.Root50001[i].Nom_Cree_Par.ToString() +
+                                    "\"," + "\"Client\": " + "\"" + RT50001.Root50001[i].Client.ToString() +
+                                    "\"," + "\"Nom_Client\": " + "\"" + RT50001.Root50001[i].Nom_Client.ToString() +
+                                    "\"," + "\"No_Projet\": " + "\"" + RT50001.Root50001[i].No_Projet.ToString() +
+                                    "\"," + "\"Nom_Projet\": " + "\"" + RT50001.Root50001[i].Nom_Projet.ToString() +
+                                    "\"," + "\"Date_Echeance\": " + "\"" + RT50001.Root50001[i].Date_Echeance.ToString() +
+                                    "\"," + "\"Date_Validation\": " + "\"" + RT50001.Root50001[i].Date_Validation.ToString() +
+                                    "\"," + "\"Validee_Par\": " + "\"" + RT50001.Root50001[i].Validee_Par.ToString() +
+                                    "\"," + "\"Nom_Validee_Par\": " + "\"" + RT50001.Root50001[i].Nom_Validee_Par.ToString() +                                    
                                     "\"}";
                     if (i != j - 1)
                     {
