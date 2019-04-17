@@ -14,13 +14,13 @@ getting.done(function (data) {
     $.each(json, function (index, Task) {
         // alert(index + ": " + value);
         tbody += "<tr row_id=\"'+row_id+'\">";
-        tbody += "<td class='row_data' edit_type='click' col_name='ID'>" + Task.ID + "</td>";
+        tbody += "<td class='row_data' edit_type='click' col_name='ID' >" + Task.ID + "</td>";
         tbody += "<td class='row_data' edit_type='click' col_name='Type'>" + Task.Type + "</td>";
-        tbody += "<tdclass='row_data' edit_type='click' col_name='Status'>" + Task.Status + "</td>";
+        tbody += "<td class='row_data' edit_type='click' col_name='Status'>" + Task.Status + "</td>";
         tbody += "<td class='row_data' edit_type='click' col_name='Titre'>" + Task.Titre + "</td>";
         tbody += "<td class='row_data' edit_type='click' col_name='Description'>" + Task.Description + "</td>";
         tbody += "<td class='row_data' edit_type='click' col_name='CreePar'>" + Task.Nom_Cree_Par + "</td>";
-        
+        tbody += "<td class='row_data' edit_type='click' col_name='DateEcheance'>" + Task.Date_Echeance + "</td>";
         tbody += "</tr>";
     });
 
@@ -39,12 +39,12 @@ getting.done(function (data) {
                 { "data": "Titre" },
                 { "data": "Description" },
                 { "data": "Nom_Cree_Par" },
+                { "data": "Date_Echeance"},
                 {
                     "data": "Action", 'render': function (data, type, row, meta) {
                         return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>';
-                       // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
                     }
-                }
+                },
             ]
         });
 
