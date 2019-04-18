@@ -5,6 +5,7 @@
 // Attach a submit handler to the form
 $("#AjoutForm").submit(function (event) {
 
+
     // Stop form from submitting normally
     event.preventDefault();
 

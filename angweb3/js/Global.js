@@ -49,6 +49,7 @@ checkSession(function (json) {
         if (location.pathname.substring(1) !== 'login.html') { // avoiding infinit loop
             document.location.href = "/login.html";
         }
+
        // 
     }
 })
