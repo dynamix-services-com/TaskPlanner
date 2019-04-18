@@ -10,6 +10,6 @@
 namespace angweb3 {
     
     
-    public partial class login {
+    public partial class Logout {
     }
 }

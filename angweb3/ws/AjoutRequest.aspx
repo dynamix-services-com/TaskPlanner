@@ -3,33 +3,42 @@
 <%
 
     String Title = "";
-    String Type = "";
+    Int32 Type = 0;
     String Description = "";
-    String Project_State = "";
+    String ClientCode = "";
     String Developer_team = "";
-    String Project_Manager = "";
+    String ProjectCode = "";
     String Photo = "";
     try
     {
         Title = Request.Params["Title"].ToString();
-        Type = Request.Params["Type"].ToString();
+        Type =Convert.ToInt32( Request.Params["Type"].ToString());
         Description = Request.Params["Description"].ToString();
-        Project_State = Request.Params["Project_State"].ToString();
+        ClientCode = Request.Params["ClientCode"].ToString();
         Developer_team = Request.Params["Developer_team"].ToString();
-        Project_Manager = Request.Params["Project_Manager"].ToString();
-        Photo = Request.Params["Photo"].ToString();
+        ProjectCode = Request.Params["ProjectCode"].ToString();
+        // Photo = Request.Params["Photo"].ToString();
+
+
+
+        angweb3.TaskPlannerWS.TaskPlannerWS TS= new angweb3.TaskPlannerWS.TaskPlannerWS();
+        TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
+
+        if (TS.AddRequest(Title,Type,Description,ClientCode,ProjectCode)) {
+            Response.Write("{\"OK\" :\"OK\",\"message\" :\"insertion avec succes\"}");
+        }
+        else
+        {
+             Response.Write("{\"OK\" :\"error\",\"message\" :\"insertion impossible\"}");
+        }
+        // angweb3.TaskPlannerWS.Root RT156 = new angweb3.TaskPlannerWS.Root();
+
+
+
 
     }
-    catch(System.Web.Services.Protocols.SoapException e)
+    catch(Exception e)
     {
-        Response.Write("{\"error\" :\"" + e.Message+"\"}");
+        Response.Write("{\"OK\" :\"error\",\"message\" :\"" + e.Message+"\"}");
     }
-
-    angweb3.TaskPlannerWS.TaskPlannerWS TS= new angweb3.TaskPlannerWS.TaskPlannerWS();
-    TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
-
-
-    angweb3.TaskPlannerWS.Root RT156 = new angweb3.TaskPlannerWS.Root();
-
-   
 %>

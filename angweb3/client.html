@@ -55,7 +55,7 @@
             <li class="active"><a href="client.html"><em class="fa fa-dashboard">&nbsp;</em> Form</a></li>
             <li><a href="tasks.html"><em class="fa fa-toggle-off">&nbsp;</em> Tasks</a></li>
             <li><a href="modifData.html"><em class="fa fa-edit">&nbsp;</em> Edit</a></li>
-            <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+            <li><a href="#" id="Logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
 
@@ -76,69 +76,84 @@
                 <h1 class="page-header">Request</h1>
             </div>
         </div><!--/.row-->
-        <div class="panel panel-container">
+        <div class="panel panel-body">
 
-            <form>
+            <form id="AjoutForm" >
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Title</label>
-                        <input type="text" class="form-control" id="Title" placeholder="Title">
+                        <input type="text" class="form-control" id="Title" name="Title" placeholder="Title" required="required">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Type</label>
-                        <input type="text" class="form-control" id="Type" placeholder="Type">
+                        <select id="Type" class="form-control" name="Type">
+                            <option selected>Choose...</option>
+                            <option>BUG</option>
+                            <option>Nouveau besoin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Description</label>
+                        <input type="text" class="form-control" id="Description" name="Description" placeholder="Description" required="required">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label>Description</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Description">
+                        <label>project Name</label>
+                        <input type="text" class="form-control" id="Project_name" name="Project_name" placeholder="Project_name"required="required">
                     </div>
-
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Project state</label>
-                        <select id="Project_State" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>In progress</option>
-                            <option>Fenced</option>
-                            <option>bill</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Developer team</label>
-                        <select id="Developer_team" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>XXX</option>
-                            <option>YYY</option>
-                            <option>XYXY</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Project manager</label>
-                        <select id="Project_Manager" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>XXX</option>
-                            <option>YYY</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <div class="custom-file">
-                            <label class="custom-file-label">Choose file...</label>
-                            <input type="Photo" class="custom-file-input" required>
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-            <button type="submit" class="btn btn-primary"> Add </button><br /><br />
+                <!--
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Project state</label>
+            <select id="Project_State" name="Project_State" class="form-control">
+                <option selected>Choose...</option>
+                <option>In progress</option>
+                <option>Fenced</option>
+                <option>bill</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Developer team</label>
+            <select id="Developer_team" class="form-control" name="Developer_team">
+                <option selected>Choose...</option>
+                <option>XXX</option>
+                <option>YYY</option>
+                <option>XYXY</option>
+            </select>
         </div>
     </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Project manager</label>
+            <select id="Project_Manager" class="form-control" name="Project_Manager">
+                <option selected>Choose...</option>
+                <option>XXX</option>
+                <option>YYY</option>
+            </select>
+        </div>
+         <div class="form-group col-md-6">
+            <div class="custom-file">
+            <label class="custom-file-label">Choose file...</label>
+            <input type="Photo" name="Photo" class="custom-file-input" required>
+        </div>
+    </div>-->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <center><button type="submit" class="btn btn-primary"> Add </button> </center><br />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
     <script src="assets/js/jquery-1.11.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
@@ -148,5 +163,7 @@
     <script src="assets/js/bootstrap-datepicker.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="route.html"></script>
+    <script src="/js/Global.js"></script>
+    <script src="/js/AjoutRequest.js"></script>
 </body>
 </html>
