@@ -95,6 +95,24 @@
           </sequence>
         </complexType>
       </element>
+      <element name="AddRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="title" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="connectedUserID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="projectID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AddRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
     </schema>
   </types>
   <message name="Authentification">
@@ -115,6 +133,12 @@
   <message name="DeleteRequest_Result">
     <part name="parameters" element="tns:DeleteRequest_Result" />
   </message>
+  <message name="AddRequest">
+    <part name="parameters" element="tns:AddRequest" />
+  </message>
+  <message name="AddRequest_Result">
+    <part name="parameters" element="tns:AddRequest_Result" />
+  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
@@ -127,6 +151,10 @@
     <operation name="DeleteRequest">
       <input name="DeleteRequest" message="tns:DeleteRequest" />
       <output name="DeleteRequest_Result" message="tns:DeleteRequest_Result" />
+    </operation>
+    <operation name="AddRequest">
+      <input name="AddRequest" message="tns:AddRequest" />
+      <output name="AddRequest_Result" message="tns:AddRequest_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -155,6 +183,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="DeleteRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AddRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:AddRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AddRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AddRequest_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

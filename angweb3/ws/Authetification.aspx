@@ -9,11 +9,6 @@
                 Login = Request.Params["login"].ToString();
                 Password = Request.Params["password"].ToString();
 
-            }
-            catch(System.Web.Services.Protocols.SoapException e)
-            {
-                Response.Write("{\"error\" :\"" + e.Message+"\"}");
-            }
 
             angweb3.TaskPlannerWS.TaskPlannerWS TS= new angweb3.TaskPlannerWS.TaskPlannerWS();
             TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
@@ -26,15 +21,26 @@
             String response = "{";
             if (isConnected)
             {
-                response = "{ \"No\" :\"" + RT156.Root156[0].No +"\"";
-            response="  \"Name\" :\"  " + RT156.Root156[0].Name+"\"";
-            response="  \"Type\" :\"  " + RT156.Root156[0].Type+"\"";
-            response="  \"Login\" :\"  " + RT156.Root156[0].Login+"\"";
-            response="  \"DDC\" :\"  " + RT156.Root156[0].DDC+"\"";
-            response+="}";
-        }
-    else
-    {
-        Response.Write("{\"error\" :\"  Invalid credentials\"}");
-    }
+                response = "{ \"error\" :\"\"";
+                response += ",\"No\" :\"" + RT156.Root156[0].No +"\"";
+                response+="  ,\"Name\" :\"" + RT156.Root156[0].Name+"\"";
+                response+="  ,\"Type\" :\"" + RT156.Root156[0].Type+"\"";
+                response+="  ,\"Login\" :\"" + RT156.Root156[0].Login+"\"";
+                response+="  ,\"DDC\" :\"" + RT156.Root156[0].DDC+"\"";
+                response+="}";
+                Session["connectedUser"] = response;
+                Response.Write(response);
+            }
+            else
+            {
+                Response.Write("{\"error\" :\"  Invalid credentials\"}");
+            }
+
+
+            
+            }
+            catch(System.Web.Services.Protocols.SoapException e)
+            {
+                Response.Write("{\"error\" :\"" + e.Message+"\"}");
+            }
 %>

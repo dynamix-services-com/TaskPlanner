@@ -87,24 +87,23 @@
         // Put the results in a div
         posting.done(function (data) {
             var json = JSON.parse(data)
-            if (json.error !== null) {
+            if (json.error !== '') {
                 $("#note").html(json.error);
             } else {
+                console.log(json);
+             //   ConnectedUser = json;
                 if (json.Type = "Client") {
-                    document.location = "index.html";
+                    document.location.href = "/tasks.html";
                 } else if (json.Type = "Manager") {
-                    document.location = "index.html";
-                } else if (json.Type = "Manager") {
-                    document.location = "developer.html";
+                    document.location.href = "/index.html";
+                } else if (json.Type = "Developer") {
+                    document.location.href = "/developer.html";
                 } 
                 
             }
             
         });
     });
-
-
-
 
 
 

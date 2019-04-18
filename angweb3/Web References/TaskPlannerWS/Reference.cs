@@ -35,6 +35,8 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback DeleteRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddRequestOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +83,9 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event DeleteRequestCompletedEventHandler DeleteRequestCompleted;
+        
+        /// <remarks/>
+        public event AddRequestCompletedEventHandler AddRequestCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -177,6 +182,44 @@ namespace angweb3.TaskPlannerWS {
             if ((this.DeleteRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DeleteRequestCompleted(this, new DeleteRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:AddRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="AddRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool AddRequest(string title, int type, string description, string connectedUserID, string projectID) {
+            object[] results = this.Invoke("AddRequest", new object[] {
+                        title,
+                        type,
+                        description,
+                        connectedUserID,
+                        projectID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddRequestAsync(string title, int type, string description, string connectedUserID, string projectID) {
+            this.AddRequestAsync(title, type, description, connectedUserID, projectID, null);
+        }
+        
+        /// <remarks/>
+        public void AddRequestAsync(string title, int type, string description, string connectedUserID, string projectID, object userState) {
+            if ((this.AddRequestOperationCompleted == null)) {
+                this.AddRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddRequestOperationCompleted);
+            }
+            this.InvokeAsync("AddRequest", new object[] {
+                        title,
+                        type,
+                        description,
+                        connectedUserID,
+                        projectID}, this.AddRequestOperationCompleted, userState);
+        }
+        
+        private void OnAddRequestOperationCompleted(object arg) {
+            if ((this.AddRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddRequestCompleted(this, new AddRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -636,6 +679,32 @@ namespace angweb3.TaskPlannerWS {
         private object[] results;
         
         internal DeleteRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void AddRequestCompletedEventHandler(object sender, AddRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

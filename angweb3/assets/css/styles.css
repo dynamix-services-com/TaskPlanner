@@ -5,8 +5,10 @@ body {
   color: #444444;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+
 p {
-  color: #777; }
+    color: #777;
+}
 
 a, a:hover, a:focus {
   color: #30a5ff; }
@@ -332,7 +334,7 @@ a.label:hover, a.label:focus {
   border: 0; }
 
 .panel-container {
-  padding-top: 20px; }
+  padding-top: 20px;}
 
 .panel-heading .fa-toggle-up, .panel-heading .fa-toggle-down {
   font-size: 17px; }
