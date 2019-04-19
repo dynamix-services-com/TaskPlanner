@@ -43,13 +43,18 @@ getting.done(function (data) {
                 {
                     "data": "Action", 'render': function (data, type, row, meta) {
                    
-                        return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" ><i class="material-icons">&#xE872;</i></a>';
+                        return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="removeRequest(\'' + row.ID + '\')" ><i class="material-icons">&#xE872;</i></a>';
                        
 //                        return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
                        // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
                     }
                 }
-            ]
+        ],
+        "createdRow": function (row, data, dataIndex) {
+            //console.log(row);
+            //console.log(data);
+            $(row).addClass('request_' + data.ID);
+        }
         });
 
 
@@ -67,9 +72,37 @@ $('#tab').on('click', 'tr', function (e, row, $element) {
 
 var table = $('#tab').DataTable();
 
+function removeRequest(id) {
+    if (confirm('Voulez-vous supprimer la requete No: ' + id)) {
+        checkSession(function (json) {
+
+            if (json !== null) {
+                ClientCode = json.No;
+                delete_Request(id, json.No, function (res) {
+
+                    if (res = "ok") {
+                        console.log(res);
+                        // alert("Request " + id + " removed");
+                        //DetMissDatatable.row($(this).parents('tr')).remove();
+                        $(".request_" + id).remove();
+                    } else {
+                        alert(res);
+                    }
+                })
+            } else {
+                document.location.href = "/login.html";
+            }
+
+        })
+
+    }
+}
+
+/*
 $('#tab tbody').on('click', '.delete', function () {
     DetMissDatatable.row($(this).parents('tr')).remove();
-    var id = DetMissDatatable.row($(this).parents('tr')).data().ID;
+    console.log(DetMissDatatable.row($(this).parents('tr')).data());
+  //  var id = DetMissDatatable.row($(this).parents('tr')).data().ID;
     var userid = "";
     //console.log(DetMissDatatable.row($(this).parents('tr')));
    
@@ -83,9 +116,9 @@ $('#tab tbody').on('click', '.delete', function () {
         } else {
             alert(res);
         }
-    })*/
+    })
   
-});
+});*/
 
 var requestID = "";
 url_delete = "/ws/deleteRequest.aspx";

@@ -33,9 +33,9 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback GetRequestListOperationCompleted;
         
-        private System.Threading.SendOrPostCallback DeleteRequestOperationCompleted;
-        
         private System.Threading.SendOrPostCallback AddRequestOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteRequestOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -82,10 +82,10 @@ namespace angweb3.TaskPlannerWS {
         public event GetRequestListCompletedEventHandler GetRequestListCompleted;
         
         /// <remarks/>
-        public event DeleteRequestCompletedEventHandler DeleteRequestCompleted;
+        public event AddRequestCompletedEventHandler AddRequestCompleted;
         
         /// <remarks/>
-        public event AddRequestCompletedEventHandler AddRequestCompleted;
+        public event DeleteRequestCompletedEventHandler DeleteRequestCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -154,38 +154,6 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:DeleteRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="DeleteRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool DeleteRequest(int requestID, string userID) {
-            object[] results = this.Invoke("DeleteRequest", new object[] {
-                        requestID,
-                        userID});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void DeleteRequestAsync(int requestID, string userID) {
-            this.DeleteRequestAsync(requestID, userID, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteRequestAsync(int requestID, string userID, object userState) {
-            if ((this.DeleteRequestOperationCompleted == null)) {
-                this.DeleteRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteRequestOperationCompleted);
-            }
-            this.InvokeAsync("DeleteRequest", new object[] {
-                        requestID,
-                        userID}, this.DeleteRequestOperationCompleted, userState);
-        }
-        
-        private void OnDeleteRequestOperationCompleted(object arg) {
-            if ((this.DeleteRequestCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteRequestCompleted(this, new DeleteRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:AddRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="AddRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public bool AddRequest(string title, int type, string description, string connectedUserID, string projectID) {
@@ -220,6 +188,38 @@ namespace angweb3.TaskPlannerWS {
             if ((this.AddRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AddRequestCompleted(this, new AddRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:DeleteRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="DeleteRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool DeleteRequest(int requestID, string userID) {
+            object[] results = this.Invoke("DeleteRequest", new object[] {
+                        requestID,
+                        userID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteRequestAsync(int requestID, string userID) {
+            this.DeleteRequestAsync(requestID, userID, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteRequestAsync(int requestID, string userID, object userState) {
+            if ((this.DeleteRequestOperationCompleted == null)) {
+                this.DeleteRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteRequestOperationCompleted);
+            }
+            this.InvokeAsync("DeleteRequest", new object[] {
+                        requestID,
+                        userID}, this.DeleteRequestOperationCompleted, userState);
+        }
+        
+        private void OnDeleteRequestOperationCompleted(object arg) {
+            if ((this.DeleteRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteRequestCompleted(this, new DeleteRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -668,17 +668,17 @@ namespace angweb3.TaskPlannerWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void DeleteRequestCompletedEventHandler(object sender, DeleteRequestCompletedEventArgs e);
+    public delegate void AddRequestCompletedEventHandler(object sender, AddRequestCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class DeleteRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AddRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal DeleteRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal AddRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -694,17 +694,17 @@ namespace angweb3.TaskPlannerWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void AddRequestCompletedEventHandler(object sender, AddRequestCompletedEventArgs e);
+    public delegate void DeleteRequestCompletedEventHandler(object sender, DeleteRequestCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AddRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class DeleteRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal AddRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal DeleteRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
