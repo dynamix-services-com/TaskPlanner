@@ -15,7 +15,7 @@
         Type =Convert.ToInt32( Request.Params["Type"].ToString());
         Description = Request.Params["Description"].ToString();
         ClientCode = Request.Params["ClientCode"].ToString();
-        Developer_team = Request.Params["Developer_team"].ToString();
+       // Developer_team = Request.Params["Developer_team"].ToString();
         ProjectCode = Request.Params["ProjectCode"].ToString();
         // Photo = Request.Params["Photo"].ToString();
 

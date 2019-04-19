@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Authetification.aspx.cs" Inherits="angweb3.ws.Authetification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Authetification.aspx.cs" Inherits="angweb3.ws.Authetification" Debug="true" %>
 <%
 
 
