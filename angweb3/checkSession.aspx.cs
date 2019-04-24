@@ -11,7 +11,10 @@ namespace angweb3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           /* if (Session["connectedUser"] == null)
+            {
+                Response.Redirect("/login.html");
+            }*/
         }
     }
 }

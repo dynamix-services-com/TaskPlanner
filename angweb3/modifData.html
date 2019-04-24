@@ -242,8 +242,11 @@
             });
             // Edit row on edit button click
             $(document).on("click", ".edit", function () {
-                $(this).parents("tr").find("td:not(:last-child, :first-child)").each(function () {
-                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                $(this).parents("tr").find("td:not(:last-child,:nth-child(2), :first-child)").each(function () {
+                    var classnm = $(this).attr("class").split(' ')[1];
+                    var clm = classnm.split("_")[1];
+                    var id = classnm.split("_")[2];
+                    $(this).html('<input type="text" class="form-control input_' + clm+'_'+ id + '" value="' + $(this).text() + '">');
                 });
                 $(this).parents("tr").find(".add, .edit").toggle();
             });
@@ -274,7 +277,7 @@
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="/js/Global.js"></script>
 
-    <script src="/js/modifTasks.js?v=1.7.2"></script>
+    <script src="/js/modifTasks.js?v=1.7.125"></script>
 
 
 </body>
