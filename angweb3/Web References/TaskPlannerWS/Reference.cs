@@ -231,23 +231,24 @@ namespace angweb3.TaskPlannerWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:UpdateRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="UpdateRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool UpdateRequest(int requestID, string status, string title, string description, string cree_Par) {
+        public bool UpdateRequest(int requestID, string status, string title, string description, string cree_Par, int type) {
             object[] results = this.Invoke("UpdateRequest", new object[] {
                         requestID,
                         status,
                         title,
                         description,
-                        cree_Par});
+                        cree_Par,
+                        type});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par) {
-            this.UpdateRequestAsync(requestID, status, title, description, cree_Par, null);
+        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par, int type) {
+            this.UpdateRequestAsync(requestID, status, title, description, cree_Par, type, null);
         }
         
         /// <remarks/>
-        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par, object userState) {
+        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par, int type, object userState) {
             if ((this.UpdateRequestOperationCompleted == null)) {
                 this.UpdateRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateRequestOperationCompleted);
             }
@@ -256,7 +257,8 @@ namespace angweb3.TaskPlannerWS {
                         status,
                         title,
                         description,
-                        cree_Par}, this.UpdateRequestOperationCompleted, userState);
+                        cree_Par,
+                        type}, this.UpdateRequestOperationCompleted, userState);
         }
         
         private void OnUpdateRequestOperationCompleted(object arg) {

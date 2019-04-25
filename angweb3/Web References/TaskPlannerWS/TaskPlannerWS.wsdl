@@ -121,6 +121,7 @@
             <element minOccurs="1" maxOccurs="1" name="title" type="string" />
             <element minOccurs="1" maxOccurs="1" name="description" type="string" />
             <element minOccurs="1" maxOccurs="1" name="cree_Par" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
           </sequence>
         </complexType>
       </element>

@@ -6,6 +6,7 @@ function Logout() {
 
     // Put the results in a div
     postingLogout.done(function (data) {
+        localStorage.clear();
         document.location.href = '/login.html';
     })
 }

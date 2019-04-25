@@ -7,10 +7,11 @@
     String Titre = "";
     String Description = "";
     String Cree_Par = "";
-
+    Int32 Type = 0;
     try
     {
-        ID = Convert.ToInt32(Request.Params["id"].ToString());
+        Type = Convert.ToInt32(Request.Params["Type"].ToString());
+         ID = Convert.ToInt32(Request.Params["id"].ToString());
         Status = Request.Params["Status"].ToString();
         Titre = Request.Params["Titre"].ToString();
         Description = Request.Params["Description"].ToString();
@@ -21,7 +22,7 @@
 
         angweb3.TaskPlannerWS.TaskPlannerWS TS = new angweb3.TaskPlannerWS.TaskPlannerWS();
         TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
-        if (TS.UpdateRequest(ID, Status, Titre, Description, Cree_Par))
+        if (TS.UpdateRequest(ID, Status, Titre, Description, Cree_Par,Type))
         {
             Response.Write("{\"OK\" :\"OK\",\"message\" :\"modification avec succes\"}");
         }
