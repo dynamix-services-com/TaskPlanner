@@ -10,6 +10,6 @@
 namespace angweb3.ws {
     
     
-    public partial class editRequest1 {
+    public partial class editRequest {
     }
 }

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace angweb3.ws
 {
-    public partial class editRequest1 : System.Web.UI.Page
+    public partial class editRequest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

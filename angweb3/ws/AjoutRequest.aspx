@@ -6,9 +6,9 @@
     Int32 Type = 0;
     String Description = "";
     String ClientCode = "";
-    String Developer_team = "";
+   // String Developer_team = "";
     String ProjectCode = "";
-    String Photo = "";
+    //String Photo = "";
     try
     {
         Title = Request.Params["Title"].ToString();

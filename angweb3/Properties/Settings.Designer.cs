@@ -26,8 +26,8 @@ namespace angweb3.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlanne" +
-            "rWS")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS" +
+            "")]
         public string angweb3_TaskPlannerWS_TaskPlannerWS {
             get {
                 return ((string)(this["angweb3_TaskPlannerWS_TaskPlannerWS"]));
