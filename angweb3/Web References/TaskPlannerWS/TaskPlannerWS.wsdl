@@ -101,31 +101,12 @@
             <element minOccurs="1" maxOccurs="1" name="title" type="string" />
             <element minOccurs="1" maxOccurs="1" name="type" type="int" />
             <element minOccurs="1" maxOccurs="1" name="description" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="connectedUser" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="project_Code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="connectedUserID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="projectID" type="string" />
           </sequence>
         </complexType>
       </element>
       <element name="AddRequest_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="UpdateRequest">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="requestID" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="status" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="title" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="cree_Par" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="UpdateRequest_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
@@ -158,12 +139,6 @@
   <message name="AddRequest_Result">
     <part name="parameters" element="tns:AddRequest_Result" />
   </message>
-  <message name="UpdateRequest">
-    <part name="parameters" element="tns:UpdateRequest" />
-  </message>
-  <message name="UpdateRequest_Result">
-    <part name="parameters" element="tns:UpdateRequest_Result" />
-  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
@@ -180,10 +155,6 @@
     <operation name="AddRequest">
       <input name="AddRequest" message="tns:AddRequest" />
       <output name="AddRequest_Result" message="tns:AddRequest_Result" />
-    </operation>
-    <operation name="UpdateRequest">
-      <input name="UpdateRequest" message="tns:UpdateRequest" />
-      <output name="UpdateRequest_Result" message="tns:UpdateRequest_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -221,15 +192,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="AddRequest_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="UpdateRequest">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:UpdateRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="UpdateRequest">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="UpdateRequest_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

@@ -67,19 +67,6 @@
     }
     
 
-    function getRequestType(callback) {
-        var gettingRequestType = $.post('/ws/getRequestType.aspx', {
-        });
-
-        gettingRequestType.done(function (data) {
-            var json = JSON.parse(data)
-            console.log(json);
-            callback(json);
-
-
-
-        })
-    }
 
 
     // Attach a submit handler to the form
@@ -103,10 +90,6 @@
             if (json.error !== '') {
                 $("#note").html(json.error);
             } else {
-
-                getRequestType(function (list) {
-                    localStorage.setItem("Requesttype", JSON.stringify(list));
-               
                 console.log(json);
              //   ConnectedUser = json;
                 if (json.Type = "Client") {
@@ -116,7 +99,7 @@
                 } else if (json.Type = "Developer") {
                     document.location.href = "/developer.html";
                 } 
-                });
+                
             }
             
         });
