@@ -217,53 +217,7 @@
         </form>
     </div>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
 
-            // Add row on add button click
-            $(document).on("click", ".add", function () {
-                var empty = false;
-                var input = $(this).parents("tr").find('input[type="text"]');
-                input.each(function () {
-                    if (!$(this).val()) {
-                        $(this).addClass("error");
-                        empty = true;
-                    } else {
-                        $(this).removeClass("error");
-                    }
-                });
-                $(this).parents("tr").find(".error").first().focus();
-                if (!empty) {
-                    input.each(function () {
-                        $(this).parent("td").html($(this).val());
-                    });
-                    $(this).parents("tr").find(".add, .edit").toggle();
-                }
-            });
-            // Edit row on edit button click
-            $(document).on("click", ".edit", function () {
-                $(this).parents("tr").find("td:not(:last-child,:nth-child(2), :first-child)").each(function () {
-                    var classnm = $(this).attr("class").split(' ')[1];
-                    var clm = classnm.split("_")[1];
-                    var id = classnm.split("_")[2];
-                    $(this).html('<input type="text" class="form-control input_' + clm+'_'+ id + '" value="' + $(this).text() + '">');
-                });
-               // $(this).parents("tr").find(".add, .edit").toggle();
-            });
-            // Delete row on delete button click
-
-            //  $(document).on("click", ".delete", function () {
-            // console.log($($(this)[0]));
-            /*  deleteRequest("", "", function (res) {
-                  if (res = "ok") {
-                      $(this).parents("tr").remove();
-                  } else {
-                      alert(res);
-                  }
-              })*/
-
-            //  });
-        });
     </script>
 
     <script src="assets/js/jquery-1.11.1.min.js"></script>
@@ -275,10 +229,10 @@
     <script src="assets/js/bootstrap-datepicker.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="/js/Global.js"></script>
+    <script src="/js/Global.js?v=1.1.1"></script>
 
-    <script src="/js/modifTasks.js?v=1.7.125"></script>
+    <script src="/js/modifTasks.js?v=1.7.149"></script>
 
 
 </body>
-    </html>
+</html>
