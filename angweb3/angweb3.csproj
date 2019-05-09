@@ -114,6 +114,7 @@
     <Content Include="images\avatar-01.jpg" />
     <Content Include="index.html" />
     <Content Include="js\AjoutRequest.js" />
+    <Content Include="js\Elements.js" />
     <Content Include="js\Global.js" />
     <Content Include="js\js-sha256.js" />
     <Content Include="js\main.js" />
@@ -165,6 +166,7 @@
     <Content Include="ws\Authetification.aspx" />
     <Content Include="ws\editRequest.aspx" />
     <Content Include="ws\getRequests.aspx" />
+    <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +239,13 @@
     </Compile>
     <Compile Include="ws\getRequests.aspx.designer.cs">
       <DependentUpon>getRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\getRequestStatus.aspx.cs">
+      <DependentUpon>getRequestStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\getRequestStatus.aspx.designer.cs">
+      <DependentUpon>getRequestStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\getRequestType.aspx.cs">
       <DependentUpon>getRequestType.aspx</DependentUpon>

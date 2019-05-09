@@ -10,6 +10,8 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/datepicker3.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/css/jquery.dataTables.min.css" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -175,53 +177,23 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Assignment table</div>
                     <div class="panel-body">
-                        <table class="table table-striped text-center">
+                        <table id="TaskList" class="table" style="width:100%;"
+                               data-toggle="table"
+                               data-row-style="TableDetMissRowStyle">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col" class="text-center">Task</th>
-                                    <th scope="col" class="text-center">Client</th>
-                                    <th scope="col" class="text-center">Project Manager</th>
-                                    <th scope="col" class="text-center">Developer</th>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Crée Par</th>
+                                    <th>Date Création</th>
+                                    <th>Client</th>
+                                    <th>Projet</th>
+                                    <th>Date echéance</th>
+                                    <th>Developer</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                    <td><select class="custom-select"><option value="1">xx</option><option value="1">yy</option></select></td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div><!-- /.panel-->
@@ -239,9 +211,11 @@
     <script src="assets/js/chart-data.js"></script>
     <script src="assets/js/easypiechart.js"></script>
     <script src="assets/js/easypiechart-data.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/bootstrap-datepicker.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="/js/Global.js"></script>
+    <script src="/js/Elements.js?v=1.5"></script>
 
 </body>
 </html>

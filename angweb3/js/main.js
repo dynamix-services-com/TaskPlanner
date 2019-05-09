@@ -81,6 +81,20 @@
         })
     }
 
+    function getRequestStatus(callback) {
+        var gettingRequestStatus = $.post('/ws/getRequestStatus.aspx', {
+        });
+
+        gettingRequestStatus.done(function (data) {
+            var json = JSON.parse(data)
+            console.log(json);
+            callback(json);
+
+
+
+        })
+    }
+
 
     // Attach a submit handler to the form
     $("#loginForm").submit(function (event) {
@@ -116,6 +130,11 @@
                     } else if (json.Type = "Developer") {
                         document.location.href = "/developer.html";
                     }
+                });
+                getRequestStatus (function (list) {
+                    localStorage.setItem("RequestStatus", JSON.stringify(list));
+
+                    console.log(json);
                 });
             }
 

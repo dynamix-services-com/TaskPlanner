@@ -3,7 +3,7 @@
 <%
 
     Int32 ID = 0;
-    String Status = "";
+    Int32 Status = 0;
     String Titre = "";
     String Description = "";
     String Cree_Par = "";
@@ -12,7 +12,7 @@
     {
         Type = Convert.ToInt32(Request.Params["Type"].ToString());
          ID = Convert.ToInt32(Request.Params["id"].ToString());
-        Status = Request.Params["Status"].ToString();
+        Status = Convert.ToInt32(Request.Params["Status"].ToString());
         Titre = Request.Params["Titre"].ToString();
         Description = Request.Params["Description"].ToString();
         Cree_Par = Request.Params["Cree_par"].ToString();

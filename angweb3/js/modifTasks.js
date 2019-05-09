@@ -50,7 +50,7 @@ getting.done(function (data) {
                      });
                  
 
-                     //                        return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
+                     // return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
                      // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
                  }
              },*/
@@ -63,7 +63,7 @@ getting.done(function (data) {
 
                     return ' <a class="add" title="Add" data-toggle="tooltip"  onclick="editRequest(\'' + row.ID + '\')"><i class="material-icons">&#xE03B;</i></a><a class="edit"   title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"  onclick="removeRequest(\'' + row.ID + '\')" ><i class="material-icons">&#xE872;</i></a>';
 
-                    //                        return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
+                    //return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
                     // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
                 }
             }
@@ -81,6 +81,14 @@ getting.done(function (data) {
                 // console.log(row.Type + '  vs  ' + value.value);
                 if (data.Type === value.index) {
                     $(row).find(".reqType").html(value.value);
+                }
+
+            });
+
+            $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
+                // console.log(row.Type + '  vs  ' + value.value);
+                if (data.Status === value.index) {
+                    $(row).find(".reqStatus").html(value.value);
                 }
 
             });
@@ -194,7 +202,7 @@ function editRequest(id) {
             $(row).find(".reqStatus").addClass('reqStatus_' + data.ID);
             $(row).find(".reqTitre").addClass('reqTitre_' + data.ID);
             $(row).find(".reqDesc").addClass('reqDesc_' + data.ID);*/
-    var Status = $('.req_ID_' + id).html();
+    var Status = $(".opt_Status_" + id).val();
     var Titre = $('.input_Titre_' + id).val();
     var Description = $('.input_Desc_' + id).val();
     var Type = $(".opt_Type_" + id).val();
@@ -258,6 +266,8 @@ $(document).ready(function () {
     // Edit row on edit button click
     $(document).on("click", ".edit", function () {
         var preSelectType = '';
+        var preSelectStatus = '';
+
         //   getRequestType(function (list) {
         var cellValue = '';
         $(this).parents("tr").find("td:not(:last-child, :first-child)").each(function () {
@@ -280,12 +290,32 @@ $(document).ready(function () {
                 preSelectType += '</select >';
                 $(this).html(preSelectType);
 
-            } else {
-                $(this).html('<input type="text" class="form-control input_' + clm + '_' + id + '" value="' + $(this).text() + '">');
-
             }
 
-        });
+        
+        else if ($(this)[0].cellIndex === 2) {
+            preSelectStatus = '<select  class="form-control opt_' + clm + '_' + id + '" name="Status">';
+
+            $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
+                console.log(cellValue + '  vs  ' + value.value);
+                if (cellValue === value.value) {
+                    preSelectStatus += '<option value="' + value.index + '" selected>' + value.value + '</option>';
+                } else {
+                    preSelectStatus += '<option value="' + value.index + '">' + value.value + '</option>';
+                }
+
+            });
+            preSelectStatus += '</select >';
+            $(this).html(preSelectStatus);
+
+        } else {
+            $(this).html('<input type="text" class="form-control input_' + clm + '_' + id + '" value="' + $(this).text() + '">');
+
+        }
+
+    });
+
+       
 
 
         $(this).parents("tr").find(".add, .edit").toggle();
