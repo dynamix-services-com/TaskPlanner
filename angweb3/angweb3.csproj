@@ -114,6 +114,7 @@
     <Content Include="images\avatar-01.jpg" />
     <Content Include="index.html" />
     <Content Include="js\AjoutRequest.js" />
+    <Content Include="js\Elements.js" />
     <Content Include="js\Global.js" />
     <Content Include="js\js-sha256.js" />
     <Content Include="js\main.js" />

@@ -4,7 +4,7 @@
     response += "{ \"index\" :\"1\"";
     response += ",\"value\" :\"BUG\"";
     response += "},";
-      response += "{ \"index\" :\"2\"";
+    response += "{ \"index\" :\"2\"";
     response += ",\"value\" :\"Nouveau besoin\"";
     response += "}";
     response +="]";
