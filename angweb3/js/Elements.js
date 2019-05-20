@@ -10,12 +10,12 @@ getting.done(function (data) {
     console.log(json);
     parsedJson = json;
     let tbody = "<tbody>";
-
     $.each(json, function (index, Task) {
         // alert(index + ": " + value);
         tbody += "<tr>";
         tbody += "<td>" + Task.ID + "</td>";
         tbody += "<td>" + Task.Type + "</td>";
+        tbody += "<td>" + Task.Status + "</td>";
         tbody += "<td>" + Task.Titre + "</td>";
         tbody += "<td>" + Task.Description + "</td>";
         tbody += "<td>" + Task.Nom_Cree_Par + "</td>";
@@ -23,9 +23,7 @@ getting.done(function (data) {
         tbody += "<td>" + Task.Nom_Client + "</td>";
         tbody += "<td>" + Task.Nom_Projet + "</td>";
         tbody += "<td>" + Task.Date_Echeance + "</td>";
-        tbody += "<td></td>";
         tbody += "</tr>";
-
     });
 
     tbody += "</tbody>";
@@ -39,13 +37,23 @@ getting.done(function (data) {
         "columns": [
             { "className": "reqid", "data": "ID" },
             { "className": "reqType", "data": "Type" },
+            { "className": "reqStatus", "data": "Status" },
             { "className": "reqTitre", "data": "Titre" },
             { "className": "reqDesc", "data": "Description" },
             { "className": "reqCp", "data": "Nom_Cree_Par" },
-            { "className": "reqDc", "data": "Date_Creation" },
+            { "className": "reqCr", "data": "Date_Creation" },
             { "className": "reqNc", "data": "Nom_Client" },
             { "className": "reqNp", "data": "Nom_Projet" },
             { "className": "reqDe", "data": "Date_Echeance" },
+            {
+                "data": "Action", 'render': function (data, type, row, meta) {
+
+                    return '<td><select><option selected> aaa </option> <option > bbb </option></select></td>';
+
+                    //return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
+                    // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
+                }
+            }
         ],
         "createdRow": function (row, data, dataIndex) {
             //console.log(row);
@@ -53,10 +61,11 @@ getting.done(function (data) {
             $(row).addClass('request_' + data.ID);
             $(row).find(".reqid").removeClass(".reqid").addClass('req_ID_' + data.ID);
             $(row).find(".reqType").removeClass(".reqType").addClass('req_Type_' + data.ID);
+            $(row).find(".reqStatus").removeClass(".reqStatus").addClass('req_Status_' + data.ID);
             $(row).find(".reqTitre").removeClass(".reqTitre").addClass('req_Titre_' + data.ID);
             $(row).find(".reqDesc").removeClass(".reqDesc").addClass('req_Desc_' + data.ID);
             $(row).find(".reqCp").removeClass(".reqCp").addClass('req_Cp_' + data.ID);
-            $(row).find(".reqDc").removeClass(".reqDc").addClass('req_Dc_' + data.ID);
+            $(row).find(".reqCr").removeClass(".reqCr").addClass('req_Cr_' + data.ID);
             $(row).find(".reqNc").removeClass(".reqNc").addClass('req_Nc_' + data.ID);
             $(row).find(".reqNp").removeClass(".reqNp").addClass('req_Np_' + data.ID);
             $(row).find(".reqDe").removeClass(".reqDe").addClass('req_De_' + data.ID);

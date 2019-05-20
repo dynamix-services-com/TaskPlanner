@@ -142,13 +142,13 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/05/2019 15:09:00</publishTime>
     </File>
     <File Include="bin/angweb3.dll">
-      <publishTime>05/09/2019 11:26:31</publishTime>
+      <publishTime>05/16/2019 10:05:17</publishTime>
     </File>
     <File Include="bin/angweb3.pdb">
-      <publishTime>05/09/2019 11:26:31</publishTime>
+      <publishTime>05/16/2019 10:05:17</publishTime>
     </File>
     <File Include="bin/angweb3.XmlSerializers.dll">
-      <publishTime>05/09/2019 11:26:33</publishTime>
+      <publishTime>05/16/2019 10:05:18</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -313,7 +313,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/18/2019 13:56:14</publishTime>
     </File>
     <File Include="elements.html">
-      <publishTime>05/09/2019 11:26:14</publishTime>
+      <publishTime>05/16/2019 10:39:06</publishTime>
     </File>
     <File Include="fonts/font-awesome-4.7.0/css/font-awesome.css">
       <publishTime>04/05/2019 15:09:00</publishTime>
@@ -520,7 +520,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>04/19/2019 15:51:36</publishTime>
     </File>
     <File Include="js/Elements.js">
-      <publishTime>05/09/2019 11:14:15</publishTime>
+      <publishTime>05/16/2019 10:37:59</publishTime>
     </File>
     <File Include="js/Global.js">
       <publishTime>04/25/2019 12:38:22</publishTime>
