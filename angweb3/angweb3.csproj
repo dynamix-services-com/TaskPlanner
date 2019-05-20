@@ -168,6 +168,7 @@
     <Content Include="ws\getRequests.aspx" />
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
+    <Content Include="ws\getTypeList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="checkSession.aspx.cs">
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="ws\getRequestType.aspx.designer.cs">
       <DependentUpon>getRequestType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\getTypeList.aspx.cs">
+      <DependentUpon>getTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\getTypeList.aspx.designer.cs">
+      <DependentUpon>getTypeList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

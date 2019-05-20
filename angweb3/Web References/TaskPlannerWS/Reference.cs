@@ -39,6 +39,8 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback UpdateRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTypeListOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +93,9 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event UpdateRequestCompletedEventHandler UpdateRequestCompleted;
+        
+        /// <remarks/>
+        public event GetTypeListCompletedEventHandler GetTypeListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -269,6 +274,39 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetTypeList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetTypeList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetTypeList(ref Root1 requestXML, int type) {
+            object[] results = this.Invoke("GetTypeList", new object[] {
+                        requestXML,
+                        type});
+            requestXML = ((Root1)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type) {
+            this.GetTypeListAsync(requestXML, type, null);
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type, object userState) {
+            if ((this.GetTypeListOperationCompleted == null)) {
+                this.GetTypeListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTypeListOperationCompleted);
+            }
+            this.InvokeAsync("GetTypeList", new object[] {
+                        requestXML,
+                        type}, this.GetTypeListOperationCompleted, userState);
+        }
+        
+        private void OnGetTypeListOperationCompleted(object arg) {
+            if ((this.GetTypeListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTypeListCompleted(this, new GetTypeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -432,6 +470,8 @@ namespace angweb3.TaskPlannerWS {
         private string imageField;
         
         private string nom_Validee_ParField;
+        
+        private string developpeurField;
         
         public Root50001() {
             this.idField = 0;
@@ -606,6 +646,16 @@ namespace angweb3.TaskPlannerWS {
             }
             set {
                 this.nom_Validee_ParField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string developpeur {
+            get {
+                return this.developpeurField;
+            }
+            set {
+                this.developpeurField = value;
             }
         }
     }
@@ -787,6 +837,40 @@ namespace angweb3.TaskPlannerWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetTypeListCompletedEventHandler(object sender, GetTypeListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTypeListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTypeListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root1 requestXML {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root1)(this.results[1]));
             }
         }
     }
