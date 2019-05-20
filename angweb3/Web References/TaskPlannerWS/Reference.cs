@@ -39,6 +39,8 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback UpdateRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTypeListOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +93,9 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event UpdateRequestCompletedEventHandler UpdateRequestCompleted;
+        
+        /// <remarks/>
+        public event GetTypeListCompletedEventHandler GetTypeListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -231,7 +236,7 @@ namespace angweb3.TaskPlannerWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:UpdateRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="UpdateRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool UpdateRequest(int requestID, string status, string title, string description, string cree_Par, int type) {
+        public bool UpdateRequest(int requestID, int status, string title, string description, string cree_Par, int type) {
             object[] results = this.Invoke("UpdateRequest", new object[] {
                         requestID,
                         status,
@@ -243,12 +248,12 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par, int type) {
+        public void UpdateRequestAsync(int requestID, int status, string title, string description, string cree_Par, int type) {
             this.UpdateRequestAsync(requestID, status, title, description, cree_Par, type, null);
         }
         
         /// <remarks/>
-        public void UpdateRequestAsync(int requestID, string status, string title, string description, string cree_Par, int type, object userState) {
+        public void UpdateRequestAsync(int requestID, int status, string title, string description, string cree_Par, int type, object userState) {
             if ((this.UpdateRequestOperationCompleted == null)) {
                 this.UpdateRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateRequestOperationCompleted);
             }
@@ -265,6 +270,39 @@ namespace angweb3.TaskPlannerWS {
             if ((this.UpdateRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateRequestCompleted(this, new UpdateRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetTypeList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetTypeList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetTypeList(ref Root1 requestXML, int type) {
+            object[] results = this.Invoke("GetTypeList", new object[] {
+                        requestXML,
+                        type});
+            requestXML = ((Root1)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type) {
+            this.GetTypeListAsync(requestXML, type, null);
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type, object userState) {
+            if ((this.GetTypeListOperationCompleted == null)) {
+                this.GetTypeListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTypeListOperationCompleted);
+            }
+            this.InvokeAsync("GetTypeList", new object[] {
+                        requestXML,
+                        type}, this.GetTypeListOperationCompleted, userState);
+        }
+        
+        private void OnGetTypeListOperationCompleted(object arg) {
+            if ((this.GetTypeListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTypeListCompleted(this, new GetTypeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -401,9 +439,9 @@ namespace angweb3.TaskPlannerWS {
         
         private int idField;
         
-        private string typeField;
+        private int typeField;
         
-        private string statusField;
+        private int statusField;
         
         private string titleField;
         
@@ -433,8 +471,12 @@ namespace angweb3.TaskPlannerWS {
         
         private string nom_Validee_ParField;
         
+        private string developpeurField;
+        
         public Root50001() {
             this.idField = 0;
+            this.typeField = 0;
+            this.statusField = 0;
         }
         
         /// <remarks/>
@@ -448,7 +490,7 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public string Type {
+        public int Type {
             get {
                 return this.typeField;
             }
@@ -458,7 +500,7 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public string Status {
+        public int Status {
             get {
                 return this.statusField;
             }
@@ -604,6 +646,16 @@ namespace angweb3.TaskPlannerWS {
             }
             set {
                 this.nom_Validee_ParField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string developpeur {
+            get {
+                return this.developpeurField;
+            }
+            set {
+                this.developpeurField = value;
             }
         }
     }
@@ -785,6 +837,40 @@ namespace angweb3.TaskPlannerWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetTypeListCompletedEventHandler(object sender, GetTypeListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTypeListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTypeListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root1 requestXML {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root1)(this.results[1]));
             }
         }
     }
