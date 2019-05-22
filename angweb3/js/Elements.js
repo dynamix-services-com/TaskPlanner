@@ -1,5 +1,28 @@
 ﻿url = "/ws/getRequests.Aspx";
+url_type = "/ws/getTypeList.aspx";
 
+
+function getRessources(type,callback) {
+    var opt = "";
+    var getting = $.get("ws/getTypeList.aspx?type=" + type, {});
+    // Put the results in a div
+    getting.done(function (data) {
+        var json = JSON.parse(data);
+        if (json.length === 0) {
+            callback(opt);
+        } else {
+            $.each(json, function (index, value) {
+                opt += '<option value="' + value.code + '">' + value.nom + '</option>';
+
+                if (index === json.length - 1) {
+                    callback(opt);
+                }
+
+            });
+        }
+
+    });
+}
 // Send the data using post
 var getting = $.get(url, {});
 var DetMissDatatable = null;
@@ -29,7 +52,7 @@ getting.done(function (data) {
     tbody += "</tbody>";
     // $('#TaskList').append(tbody);
 
-
+    getRessources(1, function (opt) { 
     DetMissDatatable = $('#TaskList').DataTable({
         searching: true,
         destroy: true,
@@ -48,7 +71,7 @@ getting.done(function (data) {
             {
                 "data": "Action", 'render': function (data, type, row, meta) {
 
-                    return '<td><select><option selected> aaa </option> <option > bbb </option></select></td>';
+                    return '<td><select> ' + opt+'</select></td>';
 
                     //return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
                     // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
@@ -90,7 +113,7 @@ getting.done(function (data) {
     });
 
 
-
+    });
 });
 
 

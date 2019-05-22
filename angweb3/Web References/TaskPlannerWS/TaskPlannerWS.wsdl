@@ -136,7 +136,7 @@
       <element name="GetTypeList">
         <complexType>
           <sequence>
-            <element xmlns:q5="urn:microsoft-dynamics-nav/xmlports/x50001" minOccurs="1" maxOccurs="1" name="requestXML" type="q5:Root" />
+            <element xmlns:q5="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="requestXML" type="q5:Root" />
             <element minOccurs="1" maxOccurs="1" name="type" type="int" />
           </sequence>
         </complexType>
@@ -145,7 +145,22 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
-            <element xmlns:q6="urn:microsoft-dynamics-nav/xmlports/x50001" minOccurs="1" maxOccurs="1" name="requestXML" type="q6:Root" />
+            <element xmlns:q6="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="requestXML" type="q6:Root" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Affectation">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="id" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="developpeur" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Affectation_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
           </sequence>
         </complexType>
       </element>
@@ -187,6 +202,12 @@
   <message name="GetTypeList_Result">
     <part name="parameters" element="tns:GetTypeList_Result" />
   </message>
+  <message name="Affectation">
+    <part name="parameters" element="tns:Affectation" />
+  </message>
+  <message name="Affectation_Result">
+    <part name="parameters" element="tns:Affectation_Result" />
+  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
@@ -211,6 +232,10 @@
     <operation name="GetTypeList">
       <input name="GetTypeList" message="tns:GetTypeList" />
       <output name="GetTypeList_Result" message="tns:GetTypeList_Result" />
+    </operation>
+    <operation name="Affectation">
+      <input name="Affectation" message="tns:Affectation" />
+      <output name="Affectation_Result" message="tns:Affectation_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -266,6 +291,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetTypeList_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Affectation">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Affectation" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Affectation">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Affectation_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

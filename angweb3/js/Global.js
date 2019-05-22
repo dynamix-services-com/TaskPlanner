@@ -38,11 +38,11 @@ checkSession(function (json) {
     console.log(json);
     if (json !== null) {
         if (location.pathname.substring(1) === 'login.html') { // avoiding infinit loop
-            if (json.Type = "Client") {
+            if (json.Type === "Client") {
                 document.location.href = "/tasks.html";
-            } else if (json.Type = "Manager") {
+            } else if (json.Type === "Manager") {
                 document.location.href = "/index.html";
-            } else if (json.Type = "Developer") {
+            } else if (json.Type === "Developer") {
                 document.location.href = "/developer.html";
             }
         }

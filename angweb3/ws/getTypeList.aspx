@@ -11,24 +11,25 @@
     TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
 
 
-    angweb3.TaskPlannerWS.Root1 RT50001 = new angweb3.TaskPlannerWS.Root1();
+    angweb3.TaskPlannerWS.Root RT50000 = new angweb3.TaskPlannerWS.Root();
 
 
-    bool c = TS.GetTypeList(ref RT50001, type);
+    bool c = TS.GetTypeList(ref RT50000, type);
 
     if (c == true)    
     {
 
         int i = 0;
 
-        int j = RT50001.Root50001.Length;
+        int j = RT50000.Root156.Length;
         //string Mission;
         string json = "[";
         //Mission = "";
         while (i < j)
         {
 
-            json += "{ \"\": " + "\"" + RT50001.Root50001[i].developpeur+
+            json += "{ \"code\": " + "\"" + RT50000.Root156[i].No+
+                 "\"," + "\"nom\": " + "\"" + RT50000.Root156[i].Name.ToString() +
                                     "\"}"; 
             if (i != j - 1)
             {
