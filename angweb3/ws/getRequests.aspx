@@ -107,6 +107,8 @@
                             "\"," + "\"Date_Validation\": " + "\"" + RT50001.Root50001[i].Date_Validation.ToString() +
                             "\"," + "\"Validee_Par\": " + "\"" + RT50001.Root50001[i].Validee_Par.ToString() +
                             "\"," + "\"Nom_Validee_Par\": " + "\"" + RT50001.Root50001[i].Nom_Validee_Par.ToString() +
+                            "\"," + "\"developpeur\": " + "\"" + RT50001.Root50001[i].developpeur.ToString() +
+
                             "\"}";
             if (i != j - 1)
             {

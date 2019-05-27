@@ -120,6 +120,7 @@
     <Content Include="js\main.js" />
     <Content Include="js\modifTasks.js" />
     <Content Include="js\Tasks.js" />
+    <Content Include="js\widgets.js" />
     <Content Include="login.aspx" />
     <Content Include="login.html" />
     <Content Include="Logout.aspx" />
@@ -161,6 +162,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="widgets.html" />
+    <Content Include="ws\Affectation.aspx" />
     <Content Include="ws\AjoutRequest.aspx" />
     <Content Include="ws\deleteRequest.aspx" />
     <Content Include="ws\Authetification.aspx" />
@@ -205,6 +207,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="ws\Affectation.aspx.cs">
+      <DependentUpon>Affectation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\Affectation.aspx.designer.cs">
+      <DependentUpon>Affectation.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\AjoutRequest.aspx.cs">
       <DependentUpon>AjoutRequest.aspx</DependentUpon>
@@ -377,10 +386,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
+    <WebReferenceUrl Include="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\TaskPlannerWS\</RelPath>
-      <UpdateFromURL>http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
+      <UpdateFromURL>http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -1,4 +1,5 @@
-﻿url = "/ws/getRequests.Aspx";
+﻿
+url = "/ws/getRequests.Aspx";
 url_type = "/ws/getTypeList.aspx";
 
 
@@ -11,6 +12,8 @@ function getRessources(type,callback) {
         if (json.length === 0) {
             callback(opt);
         } else {
+
+            opt += '<option value="null" disabled>Choisir Developpeur...</option>';
             $.each(json, function (index, value) {
                 opt += '<option value="' + value.code + '">' + value.nom + '</option>';
 
@@ -52,69 +55,125 @@ getting.done(function (data) {
     tbody += "</tbody>";
     // $('#TaskList').append(tbody);
 
-    getRessources(1, function (opt) { 
-    DetMissDatatable = $('#TaskList').DataTable({
-        searching: true,
-        destroy: true,
-        "data": parsedJson,
-        "columns": [
-            { "className": "reqid", "data": "ID" },
-            { "className": "reqType", "data": "Type" },
-            { "className": "reqStatus", "data": "Status" },
-            { "className": "reqTitre", "data": "Titre" },
-            { "className": "reqDesc", "data": "Description" },
-            { "className": "reqCp", "data": "Nom_Cree_Par" },
-            { "className": "reqCr", "data": "Date_Creation" },
-            { "className": "reqNc", "data": "Nom_Client" },
-            { "className": "reqNp", "data": "Nom_Projet" },
-            { "className": "reqDe", "data": "Date_Echeance" },
-            {
-                "data": "Action", 'render': function (data, type, row, meta) {
+    getRessources(1, function (opt) {
+        DetMissDatatable = $('#TaskList').DataTable({
+            searching: true,
+            destroy: true,
+            "data": parsedJson,
+            "columns": [
+                { "className": "reqid", "data": "ID" },
+                { "className": "reqType", "data": "Type" },
+                { "className": "reqStatus", "data": "Status" },
+                { "className": "reqTitre", "data": "Titre" },
+                { "className": "reqDesc", "data": "Description" },
+                { "className": "reqCp", "data": "Nom_Cree_Par" },
+                { "className": "reqCr", "data": "Date_Creation" },
+                { "className": "reqNc", "data": "Nom_Client" },
+                { "className": "reqNp", "data": "Nom_Projet" },
+                { "className": "reqDe", "data": "Date_Echeance" },
+                {
+                    "data": "Action", 'render': function (data, type, row, meta) {
+                        return '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ' + opt + '</select>';
 
-                    return '<td><select> ' + opt+'</select></td>';
 
-                    //return ' <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip" id="request_' + row.ID + '" onclick="deleteRequest(\'' + row.ID +'\',\'\')"><i class="material-icons">&#xE872;</i></a>';
-                    // return '<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="\' + row_id +\'" > Edit</a> </span><span class="btn_save" > <a href="#" class="btn btn-link" row_id="\'+row_id+\'"> Save</a> </span > <span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="\' + row_id + \'"> Cancel</a> </span>';
+                    }
+                },
+                {
+                    "data": "Action", 'render': function (data, type, row, meta) {
+
+                        return '<td> <input type="button" value="Affect" class="btn btn-info" onclick="affectationRequest(\'' + row.ID + '\')"></td>';
+
+
+                    }
+
+
                 }
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                //console.log(row);
+                //console.log(data);
+                $(row).addClass('request_' + data.ID);
+                $(row).find(".reqid").removeClass(".reqid").addClass('req_ID_' + data.ID);
+                $(row).find(".reqType").removeClass(".reqType").addClass('req_Type_' + data.ID);
+                $(row).find(".reqStatus").removeClass(".reqStatus").addClass('req_Status_' + data.ID);
+                $(row).find(".reqTitre").removeClass(".reqTitre").addClass('req_Titre_' + data.ID);
+                $(row).find(".reqDesc").removeClass(".reqDesc").addClass('req_Desc_' + data.ID);
+                $(row).find(".reqCp").removeClass(".reqCp").addClass('req_Cp_' + data.ID);
+                $(row).find(".reqCr").removeClass(".reqCr").addClass('req_Cr_' + data.ID);
+                $(row).find(".reqNc").removeClass(".reqNc").addClass('req_Nc_' + data.ID);
+                $(row).find(".reqNp").removeClass(".reqNp").addClass('req_Np_' + data.ID);
+                $(row).find(".reqDe").removeClass(".reqDe").addClass('req_De_' + data.ID);
+                $.each(JSON.parse(localStorage.getItem("Requesttype")), function (index, value) {
+                    // console.log(row.Type + '  vs  ' + value.value);
+                    if (data.Type === value.index) {
+                        $(row).find(".reqType").html(value.value);
+                    }
+
+                });
+
+                $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
+                    // console.log(row.Type + '  vs  ' + value.value);
+                    if (data.Status === value.index) {
+                        $(row).find(".reqStatus").html(value.value);
+                    }
+                });
+
+
+                if (data.developpeur !== "") {
+                    console.log('#opt_Dev_' + data.ID + "  " + data.developpeur);
+                    // $("#opt_Dev_ option:selected").attr('disabled', 'disabled');
+
+                    // $('#opt_Dev_' + data.ID).val(data.developpeur).change()
+                       // $("#opt_Dev").prop("disabled", true);
+
+
+                    $("#opt_Dev_").change(function () {
+                    $("select").prop("disabled", true);
+                    
+                    
+                    });   
+                }
+
             }
-        ],
-        "createdRow": function (row, data, dataIndex) {
-            //console.log(row);
-            //console.log(data);
-            $(row).addClass('request_' + data.ID);
-            $(row).find(".reqid").removeClass(".reqid").addClass('req_ID_' + data.ID);
-            $(row).find(".reqType").removeClass(".reqType").addClass('req_Type_' + data.ID);
-            $(row).find(".reqStatus").removeClass(".reqStatus").addClass('req_Status_' + data.ID);
-            $(row).find(".reqTitre").removeClass(".reqTitre").addClass('req_Titre_' + data.ID);
-            $(row).find(".reqDesc").removeClass(".reqDesc").addClass('req_Desc_' + data.ID);
-            $(row).find(".reqCp").removeClass(".reqCp").addClass('req_Cp_' + data.ID);
-            $(row).find(".reqCr").removeClass(".reqCr").addClass('req_Cr_' + data.ID);
-            $(row).find(".reqNc").removeClass(".reqNc").addClass('req_Nc_' + data.ID);
-            $(row).find(".reqNp").removeClass(".reqNp").addClass('req_Np_' + data.ID);
-            $(row).find(".reqDe").removeClass(".reqDe").addClass('req_De_' + data.ID);
-            $.each(JSON.parse(localStorage.getItem("Requesttype")), function (index, value) {
-                // console.log(row.Type + '  vs  ' + value.value);
-                if (data.Type === value.index) {
-                    $(row).find(".reqType").html(value.value);
-                }
-
             });
-
-            $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
-                // console.log(row.Type + '  vs  ' + value.value);
-                if (data.Status === value.index) {
-                    $(row).find(".reqStatus").html(value.value);
-                }
-
-            });
-
-        }
-
-    });
-
-
     });
 });
+url_affect = "/ws/Affectation.aspx";
+
+function affectationRequest(id) {
+
+    //var developpeur = $("#opt_Dev_" + id).val();
+
+    var developpeur = $("#opt_Dev_" + id + " option:selected").val();
+
+    affectation_Request(id, developpeur, function (res) {
+        if (res = "ok") {
+            alert("Request " + id + " affected");
+        } else {
+            alert(res);
+        }
+    })
+
+}
+
+function affectation_Request(id, developpeur, callback) {
+
+    var PostingEdit = $.post(url_affect, {
+        id: id, developpeur: developpeur
+    });
+
+    PostingEdit.done(function (data) {
+        var json = JSON.parse(data)
+        console.log(json);
+        callback(json.OK);
+
+
+
+    })
+
+
+}
+
 
 
 
