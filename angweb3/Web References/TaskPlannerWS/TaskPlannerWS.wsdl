@@ -39,11 +39,40 @@
           <element minOccurs="1" maxOccurs="1" name="Image" type="string" />
           <element minOccurs="1" maxOccurs="1" name="Nom_Validee_Par" type="string" />
           <element minOccurs="1" maxOccurs="1" name="developpeur" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Project" type="string" />
         </sequence>
       </complexType>
       <complexType name="Root" mixed="true">
         <sequence>
           <element minOccurs="1" maxOccurs="unbounded" name="Root50001" type="tns:Root50001" />
+        </sequence>
+      </complexType>
+      <element name="Root" type="tns:Root" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x50002" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x50002" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="Root50002">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="ID" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Project" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="Root" mixed="true">
+        <sequence>
+          <element minOccurs="1" maxOccurs="unbounded" name="Root50002" type="tns:Root50002" />
+        </sequence>
+      </complexType>
+      <element name="Root" type="tns:Root" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x50003" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x50003" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="Root50003">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="ID" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="nom" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="Root" mixed="true">
+        <sequence>
+          <element minOccurs="1" maxOccurs="unbounded" name="Root50003" type="tns:Root50003" />
         </sequence>
       </complexType>
       <element name="Root" type="tns:Root" />
@@ -104,6 +133,8 @@
             <element minOccurs="1" maxOccurs="1" name="description" type="string" />
             <element minOccurs="1" maxOccurs="1" name="connectedUser" type="string" />
             <element minOccurs="1" maxOccurs="1" name="project_Code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="date_Echeance" type="dateTime" />
+            <element minOccurs="1" maxOccurs="1" name="client" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -164,6 +195,38 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetProjects">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="no" type="string" />
+            <element xmlns:q7="urn:microsoft-dynamics-nav/xmlports/x50002" minOccurs="1" maxOccurs="1" name="xML" type="q7:Root" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProjects_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+            <element xmlns:q8="urn:microsoft-dynamics-nav/xmlports/x50002" minOccurs="1" maxOccurs="1" name="xML" type="q8:Root" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClients">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="id" type="string" />
+            <element xmlns:q9="urn:microsoft-dynamics-nav/xmlports/x50003" minOccurs="1" maxOccurs="1" name="xmlRec" type="q9:Root" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClients_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+            <element xmlns:q10="urn:microsoft-dynamics-nav/xmlports/x50003" minOccurs="1" maxOccurs="1" name="xmlRec" type="q10:Root" />
+          </sequence>
+        </complexType>
+      </element>
     </schema>
   </types>
   <message name="Authentification">
@@ -208,6 +271,18 @@
   <message name="Affectation_Result">
     <part name="parameters" element="tns:Affectation_Result" />
   </message>
+  <message name="GetProjects">
+    <part name="parameters" element="tns:GetProjects" />
+  </message>
+  <message name="GetProjects_Result">
+    <part name="parameters" element="tns:GetProjects_Result" />
+  </message>
+  <message name="GetClients">
+    <part name="parameters" element="tns:GetClients" />
+  </message>
+  <message name="GetClients_Result">
+    <part name="parameters" element="tns:GetClients_Result" />
+  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
@@ -236,6 +311,14 @@
     <operation name="Affectation">
       <input name="Affectation" message="tns:Affectation" />
       <output name="Affectation_Result" message="tns:Affectation_Result" />
+    </operation>
+    <operation name="GetProjects">
+      <input name="GetProjects" message="tns:GetProjects" />
+      <output name="GetProjects_Result" message="tns:GetProjects_Result" />
+    </operation>
+    <operation name="GetClients">
+      <input name="GetClients" message="tns:GetClients" />
+      <output name="GetClients_Result" message="tns:GetClients_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -303,10 +386,28 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetProjects">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetProjects" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProjects">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProjects_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClients">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetClients" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClients">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClients_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
   </binding>
   <service name="TaskPlannerWS">
     <port name="TaskPlannerWS_Port" binding="tns:TaskPlannerWS_Binding">
-      <address location="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

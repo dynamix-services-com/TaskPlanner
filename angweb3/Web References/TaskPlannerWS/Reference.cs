@@ -43,6 +43,10 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback AffectationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetProjectsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetClientsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -101,6 +105,12 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event AffectationCompletedEventHandler AffectationCompleted;
+        
+        /// <remarks/>
+        public event GetProjectsCompletedEventHandler GetProjectsCompleted;
+        
+        /// <remarks/>
+        public event GetClientsCompletedEventHandler GetClientsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -203,23 +213,25 @@ namespace angweb3.TaskPlannerWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:AddRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="AddRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool AddRequest(string title, int type, string description, string connectedUser, string project_Code) {
+        public bool AddRequest(string title, int type, string description, string connectedUser, string project_Code, System.DateTime date_Echeance, string client) {
             object[] results = this.Invoke("AddRequest", new object[] {
                         title,
                         type,
                         description,
                         connectedUser,
-                        project_Code});
+                        project_Code,
+                        date_Echeance,
+                        client});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void AddRequestAsync(string title, int type, string description, string connectedUser, string project_Code) {
-            this.AddRequestAsync(title, type, description, connectedUser, project_Code, null);
+        public void AddRequestAsync(string title, int type, string description, string connectedUser, string project_Code, System.DateTime date_Echeance, string client) {
+            this.AddRequestAsync(title, type, description, connectedUser, project_Code, date_Echeance, client, null);
         }
         
         /// <remarks/>
-        public void AddRequestAsync(string title, int type, string description, string connectedUser, string project_Code, object userState) {
+        public void AddRequestAsync(string title, int type, string description, string connectedUser, string project_Code, System.DateTime date_Echeance, string client, object userState) {
             if ((this.AddRequestOperationCompleted == null)) {
                 this.AddRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddRequestOperationCompleted);
             }
@@ -228,7 +240,9 @@ namespace angweb3.TaskPlannerWS {
                         type,
                         description,
                         connectedUser,
-                        project_Code}, this.AddRequestOperationCompleted, userState);
+                        project_Code,
+                        date_Echeance,
+                        client}, this.AddRequestOperationCompleted, userState);
         }
         
         private void OnAddRequestOperationCompleted(object arg) {
@@ -340,6 +354,72 @@ namespace angweb3.TaskPlannerWS {
             if ((this.AffectationCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AffectationCompleted(this, new AffectationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetProjects", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetProjects_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetProjects(string no, ref Root2 xML) {
+            object[] results = this.Invoke("GetProjects", new object[] {
+                        no,
+                        xML});
+            xML = ((Root2)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetProjectsAsync(string no, Root2 xML) {
+            this.GetProjectsAsync(no, xML, null);
+        }
+        
+        /// <remarks/>
+        public void GetProjectsAsync(string no, Root2 xML, object userState) {
+            if ((this.GetProjectsOperationCompleted == null)) {
+                this.GetProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectsOperationCompleted);
+            }
+            this.InvokeAsync("GetProjects", new object[] {
+                        no,
+                        xML}, this.GetProjectsOperationCompleted, userState);
+        }
+        
+        private void OnGetProjectsOperationCompleted(object arg) {
+            if ((this.GetProjectsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetProjectsCompleted(this, new GetProjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetClients", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetClients_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetClients(string id, ref Root3 xmlRec) {
+            object[] results = this.Invoke("GetClients", new object[] {
+                        id,
+                        xmlRec});
+            xmlRec = ((Root3)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetClientsAsync(string id, Root3 xmlRec) {
+            this.GetClientsAsync(id, xmlRec, null);
+        }
+        
+        /// <remarks/>
+        public void GetClientsAsync(string id, Root3 xmlRec, object userState) {
+            if ((this.GetClientsOperationCompleted == null)) {
+                this.GetClientsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClientsOperationCompleted);
+            }
+            this.InvokeAsync("GetClients", new object[] {
+                        id,
+                        xmlRec}, this.GetClientsOperationCompleted, userState);
+        }
+        
+        private void OnGetClientsOperationCompleted(object arg) {
+            if ((this.GetClientsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetClientsCompleted(this, new GetClientsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -471,6 +551,142 @@ namespace angweb3.TaskPlannerWS {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
+    public partial class Root50003 {
+        
+        private string idField;
+        
+        private string nomField;
+        
+        /// <remarks/>
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string nom {
+            get {
+                return this.nomField;
+            }
+            set {
+                this.nomField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
+    public partial class Root3 {
+        
+        private Root50003[] root50003Field;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Root50003")]
+        public Root50003[] Root50003 {
+            get {
+                return this.root50003Field;
+            }
+            set {
+                this.root50003Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
+    public partial class Root50002 {
+        
+        private string idField;
+        
+        private string projectField;
+        
+        /// <remarks/>
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
+    public partial class Root2 {
+        
+        private Root50002[] root50002Field;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Root50002")]
+        public Root50002[] Root50002 {
+            get {
+                return this.root50002Field;
+            }
+            set {
+                this.root50002Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50001")]
     public partial class Root50001 {
         
@@ -509,6 +725,8 @@ namespace angweb3.TaskPlannerWS {
         private string nom_Validee_ParField;
         
         private string developpeurField;
+        
+        private string projectField;
         
         public Root50001() {
             this.idField = 0;
@@ -693,6 +911,16 @@ namespace angweb3.TaskPlannerWS {
             }
             set {
                 this.developpeurField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
             }
         }
     }
@@ -934,6 +1162,74 @@ namespace angweb3.TaskPlannerWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetProjectsCompletedEventHandler(object sender, GetProjectsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetProjectsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetProjectsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root2 xML {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root2)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetClientsCompletedEventHandler(object sender, GetClientsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetClientsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetClientsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root3 xmlRec {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root3)(this.results[1]));
             }
         }
     }

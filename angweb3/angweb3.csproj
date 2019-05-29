@@ -164,6 +164,7 @@
     <Content Include="widgets.html" />
     <Content Include="ws\Affectation.aspx" />
     <Content Include="ws\AjoutRequest.aspx" />
+    <Content Include="ws\Clients.aspx" />
     <Content Include="ws\deleteRequest.aspx" />
     <Content Include="ws\Authetification.aspx" />
     <Content Include="ws\editRequest.aspx" />
@@ -171,6 +172,7 @@
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
     <Content Include="ws\getTypeList.aspx" />
+    <Content Include="ws\Projetcs.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="checkSession.aspx.cs">
@@ -222,6 +224,13 @@
     <Compile Include="ws\AjoutRequest.aspx.designer.cs">
       <DependentUpon>AjoutRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ws\Clients.aspx.cs">
+      <DependentUpon>Clients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\Clients.aspx.designer.cs">
+      <DependentUpon>Clients.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ws\deleteRequest.aspx.cs">
       <DependentUpon>deleteRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -270,6 +279,13 @@
     </Compile>
     <Compile Include="ws\getTypeList.aspx.designer.cs">
       <DependentUpon>getTypeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\Projetcs.aspx.cs">
+      <DependentUpon>Projetcs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\Projetcs.aspx.designer.cs">
+      <DependentUpon>Projetcs.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +383,12 @@
     <Content Include="Web References\TaskPlannerWS\Root1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\TaskPlannerWS\Root2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TaskPlannerWS\Root3.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\TaskPlannerWS\TaskPlannerWS.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -386,10 +408,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
+    <WebReferenceUrl Include="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\TaskPlannerWS\</RelPath>
-      <UpdateFromURL>http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
+      <UpdateFromURL>http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

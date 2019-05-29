@@ -2,29 +2,51 @@
 url = "/ws/getRequests.Aspx";
 url_type = "/ws/getTypeList.aspx";
 
-
-function getRessources(type,callback) {
-    var opt = "";
+function getTypeList(type,callback) {
     var getting = $.get("ws/getTypeList.aspx?type=" + type, {});
     // Put the results in a div
     getting.done(function (data) {
         var json = JSON.parse(data);
+        callback(json);
+    })
+}
+function getRessources(json, row, callback) {
+    if (row.Status === "4") {
+        if (row.developpeur !== "") {
+            $.each(json, function (index, value) {
+                if (row.developpeur === value.code) {
+                    callback(value.nom);
+                }
+            })
+        } else {
+            callback("");
+        }
+       
+    } else { 
+    var opt = '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ';
+   
         if (json.length === 0) {
-            callback(opt);
+            callback(opt + '</select></td>');
         } else {
 
             opt += '<option value="null" disabled>Choisir Developpeur...</option>';
             $.each(json, function (index, value) {
-                opt += '<option value="' + value.code + '">' + value.nom + '</option>';
+                if (row.developpeur === value.code) {
+                    opt += '<option value="' + value.code + '" selected>' + value.nom + '</option>';
+                } else {
+                    opt += '<option value="' + value.code + '">' + value.nom + '</option>';
 
+                }
                 if (index === json.length - 1) {
-                    callback(opt);
+                    callback(opt + '</select></td>');
                 }
 
             });
         }
 
-    });
+   
+
+}
 }
 // Send the data using post
 var getting = $.get(url, {});
@@ -32,7 +54,7 @@ var DetMissDatatable = null;
 // Put the results in a div
 getting.done(function (data) {
     var json = JSON.parse(data)
-
+    getTypeList(1,function (jsonType) {
     console.log(json);
     parsedJson = json;
     let tbody = "<tbody>";
@@ -55,7 +77,7 @@ getting.done(function (data) {
     tbody += "</tbody>";
     // $('#TaskList').append(tbody);
 
-    getRessources(1, function (opt) {
+    
         DetMissDatatable = $('#TaskList').DataTable({
             searching: true,
             destroy: true,
@@ -71,13 +93,15 @@ getting.done(function (data) {
                 { "className": "reqNc", "data": "Nom_Client" },
                 { "className": "reqNp", "data": "Nom_Projet" },
                 { "className": "reqDe", "data": "Date_Echeance" },
-                {
+                { "className": "reqDev", "data": null },
+               /* {
                     "data": "Action", 'render': function (data, type, row, meta) {
+                      //  getRessources(1,row, function (opt) { 
                         return '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ' + opt + '</select>';
-
+                      //  });
 
                     }
-                },
+                },*/
                 {
                     "data": "Action", 'render': function (data, type, row, meta) {
 
@@ -118,25 +142,14 @@ getting.done(function (data) {
                     }
                 });
 
+                getRessources(jsonType, data, function (opt) {
+                    $(row).find(".reqDev").html(opt);
 
-                if (data.developpeur !== "") {
-                    console.log('#opt_Dev_' + data.ID + "  " + data.developpeur);
-                    // $("#opt_Dev_ option:selected").attr('disabled', 'disabled');
-
-                    // $('#opt_Dev_' + data.ID).val(data.developpeur).change()
-                       // $("#opt_Dev").prop("disabled", true);
-
-
-                    $("#opt_Dev_").change(function () {
-                    $("select").prop("disabled", true);
-                    
-                    
-                    });   
-                }
+                });
 
             }
             });
-    });
+    })//end JsonType
 });
 url_affect = "/ws/Affectation.aspx";
 

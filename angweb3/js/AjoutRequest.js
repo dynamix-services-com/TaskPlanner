@@ -1,5 +1,6 @@
 ﻿url = "/ws/AjoutRequest.aspx";
-
+url_Projects = "ws/Projects.aspx";
+url_Clients = "ws/Clients.aspx";
 
 
 // Attach a submit handler to the form
@@ -15,6 +16,11 @@ $("#AjoutForm").submit(function (event) {
     var SelectElem_Type = document.getElementById('Type');
     Type = SelectElem_Type.selectedIndex;
     Description = $form.find("input[name='Description']").val();
+    Date_deadline = $form.find("input[name='Date_deadline']").val();
+   // var Client = $('#Client').find(":selected").val();
+    var ProjectCode = $('#ProjectCode').find(":selected").val();
+    var clientC = $form.find('#Client');
+    clientC += 
     var ClientCode = "";
     checkSession(function (json) {
         
@@ -29,9 +35,9 @@ $("#AjoutForm").submit(function (event) {
             //     url = $form.attr("action");
 
             // Send the data using post
-            var posting = $.post(url, {
-                Title: Title, Type: Type, Description: Description, ClientCode: ClientCode,
-                ProjectCode: $form.find("input[name='ProjectCode']").val()/*, Photo: Photo*/
+            var posting = $.post(url, url_Projects, url_Clients, {
+                Title: Title, Type: Type, Description: Description, 
+                ProjectCode: ProjectCode, Client: Client, date_Echeance: Date_deadline, ClientCode: ClientCode/*, Photo: Photo*/
             });
 
             // Put the results in a div
