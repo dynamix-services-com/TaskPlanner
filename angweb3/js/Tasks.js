@@ -44,8 +44,8 @@ getting.done(function (data) {
         tbody += "<td>" + Task.Description + "</td>";
         tbody += "<td>" + Task.Nom_Cree_Par + "</td>";
         tbody += "<td>" + Task.Date_Creation + "</td>";
-        tbody += "<td>" + Task.Nom_Client + "</td>";
-        tbody += "<td>" + Task.Nom_Projet + "</td>";
+        tbody += "<td>" + Task.Client + "</td>";
+        tbody += "<td>" + Task.No_Projet + "</td>";
         tbody += "<td>" + Task.Date_Echeance + "</td>";
         tbody += "</tr>";
 
@@ -67,8 +67,8 @@ getting.done(function (data) {
             { "className": "reqDesc", "data": "Description" },
             { "className": "reqCp", "data": "Nom_Cree_Par" },
             { "className": "reqDCre","data": "Date_Creation" },
-            { "className": "reqNC","data": "Nom_Client" },
-            { "className": "reqNP","data": "Nom_Projet" },
+            { "className": "reqNC","data": "Client" },
+            { "className": "reqNP", "data": "No_Projet" },
             { "className": "reqDEch","data": "Date_Echeance" },
         ],
         "createdRow": function (row, data, dataIndex) {

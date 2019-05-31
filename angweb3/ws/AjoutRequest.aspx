@@ -25,7 +25,7 @@
         angweb3.TaskPlannerWS.TaskPlannerWS TS= new angweb3.TaskPlannerWS.TaskPlannerWS();
         TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
 
-        if (TS.AddRequest(Title,Type,Description,ProjectCode,ClientCode,date_Echeance,Client)) {
+        if (TS.AddRequest(Title,Type,Description,ClientCode,ProjectCode,date_Echeance,Client)) {
             Response.Write("{\"OK\" :\"OK\",\"message\" :\"insertion avec succes\"}");
         }
         else

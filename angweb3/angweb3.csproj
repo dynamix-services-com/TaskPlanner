@@ -172,7 +172,7 @@
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
     <Content Include="ws\getTypeList.aspx" />
-    <Content Include="ws\Projetcs.aspx" />
+    <Content Include="ws\Projects.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="checkSession.aspx.cs">
@@ -280,12 +280,12 @@
     <Compile Include="ws\getTypeList.aspx.designer.cs">
       <DependentUpon>getTypeList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ws\Projetcs.aspx.cs">
-      <DependentUpon>Projetcs.aspx</DependentUpon>
+    <Compile Include="ws\Projects.aspx.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ws\Projetcs.aspx.designer.cs">
-      <DependentUpon>Projetcs.aspx</DependentUpon>
+    <Compile Include="ws\Projects.aspx.designer.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

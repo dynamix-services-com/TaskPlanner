@@ -27,6 +27,7 @@
                 response+="  ,\"Type\" :\"" + RT156.Root156[0].Type+"\"";
                 response+="  ,\"Login\" :\"" + RT156.Root156[0].Login+"\"";
                 response+="  ,\"DDC\" :\"" + RT156.Root156[0].DDC+"\"";
+
                 response+="}";
                 Session["connectedUser"] = response;
                 Response.Write(response);
