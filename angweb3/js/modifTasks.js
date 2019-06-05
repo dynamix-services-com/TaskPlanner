@@ -270,7 +270,7 @@ $(document).ready(function () {
 
         //   getRequestType(function (list) {
         var cellValue = '';
-        $(this).parents("tr").find("td:not(:last-child, :first-child)").each(function () {
+        $(this).parents("tr").find("td:not(:last-child,:nth-child(6), :first-child)").each(function () {
             cellValue = $(this).text();
             var classnm = $(this).attr("class").split(' ')[1];
             var clm = classnm.split("_")[1];

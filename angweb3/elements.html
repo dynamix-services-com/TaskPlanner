@@ -32,46 +32,7 @@
                 </button>
                 <a class="navbar-brand" href="#"><span>Dynamix</span>Services</a>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-                                    </a>
-                                    <div class="message-body">
-                                        <small class="pull-right">3 mins ago</small>
-                                        <a href="#"><strong>John Doe</strong> commented on <strong>your photo</strong>.</a>
-                                        <br /><small class="text-muted">1:24 pm - 25/03/2015</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-                                    </a>
-                                    <div class="message-body">
-                                        <small class="pull-right">1 hour ago</small>
-                                        <a href="#">New message from <strong>Jane Doe</strong>.</a>
-                                        <br /><small class="text-muted">12:27 pm - 25/03/2015</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="all-button">
-                                    <a href="#">
-                                        <em class="fa fa-inbox"></em> <strong>All Messages</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <em class="fa fa-bell"></em><span class="label label-info">5</span>
@@ -124,33 +85,21 @@
         </div>
         <div class="divider"></div>
         <form role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
+           
         </form>
         <ul class="nav menu">
-            <li><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Calendar</a></li>
+            <li><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Tabeleau de bord</a></li>
+            <li ><a href="forms.html"><em class="fa fa-dashboard">&nbsp;</em>Formulaire </a></li>
+
+            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Calendrier</a></li>
             <li class="active">
                 <a href="elements.html">
-                    <em class="fa fa-toggle-off">&nbsp;</em>tasks List<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    <em class="fa fa-list">&nbsp;</em>Liste des tâches<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
-                <ul class="children collapse" id="sub-item-1">
-                    <li>
-                        <a href="#assiTab">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Assignment table
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Display table
-                        </a>
-                    </li>
 
-                </ul>
             </li>
 
-            <li><a href="#" id="Logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+            <li><a href="#" id="Logout"><em class="fa fa-power-off">&nbsp;</em> déconnexion</a></li>
         </ul>
     </div><!--/.sidebar-->
 
@@ -162,13 +111,13 @@
                         <em class="fa fa-home"></em>
                     </a>
                 </li>
-                <li class="active">Forms</li>
+                <li class="active">tableau</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Tasks table</h1>
+                <h1 class="page-header">Tableau des taches</h1>
             </div>
         </div><!--/.row-->
 
@@ -176,7 +125,7 @@
         <div class="row" id="assiTab">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Assignment table</div>
+                    <div class="panel-heading">ce tableau presente la liste des taches et a qui affecter</div>
                     <div class="panel-body">
                         <table id="TaskList" class="table" style="width:100%;"
                                data-toggle="table"
@@ -193,7 +142,7 @@
                                     <th>Client</th>
                                     <th>Projet</th>
                                     <th>Date echéance</th>
-                                    <th>Developer</th>
+                                    <th>développeur</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -201,46 +150,18 @@
                     </div>
                 </div><!-- /.panel-->
 
-
-
-            </div><!-- /.panel-->
-        </div><!-- /.col-->
-
-
-
-        <div class="row" id="disTab">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Display table</div>
-                    <div class="panel-body">
-                        <table id="TaskList" class="table" style="width:100%;"
-                               data-toggle="table"
-                               data-row-style="TableDetMissRowStyle">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Titre</th>
-                                    <th>Description</th>
-                                    <th>Crée Par</th>
-                                    <th>Date Création</th>
-                                    <th>Client</th>
-                                    <th>Projet</th>
-                                    <th>Date echéance</th>
-                                    <th>Developer</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div><!-- /.panel-->
-
-
+            </div>
 
             </div><!-- /.panel-->
         </div><!-- /.col-->
 
-    </div><!-- /.row -->
+
+
+       
+
+
+
+            
 
     <script src="assets/js/jquery-1.11.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

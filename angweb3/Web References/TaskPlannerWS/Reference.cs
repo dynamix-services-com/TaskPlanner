@@ -495,6 +495,8 @@ namespace angweb3.TaskPlannerWS {
         
         private string dDCField;
         
+        private string emailField;
+        
         /// <remarks/>
         public string No {
             get {
@@ -542,6 +544,16 @@ namespace angweb3.TaskPlannerWS {
             }
             set {
                 this.dDCField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
             }
         }
     }

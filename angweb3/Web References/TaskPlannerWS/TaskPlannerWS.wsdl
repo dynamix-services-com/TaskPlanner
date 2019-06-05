@@ -9,6 +9,7 @@
           <element minOccurs="1" maxOccurs="1" name="Name" type="string" />
           <element minOccurs="1" maxOccurs="1" name="Login" type="string" />
           <element minOccurs="1" maxOccurs="1" name="DDC" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Email" type="string" />
         </sequence>
       </complexType>
       <complexType name="Root" mixed="true">

@@ -93,7 +93,6 @@
     <Content Include="assets\js\lumino.glyphs.js" />
     <Content Include="assets\js\npm.js" />
     <Content Include="assets\js\respond.min.js" />
-    <Content Include="charts.html" />
     <Content Include="checkSession.aspx" />
     <Content Include="client.html" />
     <Content Include="css\main.css" />
@@ -108,6 +107,7 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="forms.html" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar-011.jpg" />
     <Content Include="images\icons\favicon.ico" />
@@ -115,6 +115,7 @@
     <Content Include="index.html" />
     <Content Include="js\AjoutRequest.js" />
     <Content Include="js\Elements.js" />
+    <Content Include="js\forms.js" />
     <Content Include="js\Global.js" />
     <Content Include="js\js-sha256.js" />
     <Content Include="js\main.js" />
@@ -168,6 +169,7 @@
     <Content Include="ws\deleteRequest.aspx" />
     <Content Include="ws\Authetification.aspx" />
     <Content Include="ws\editRequest.aspx" />
+    <Content Include="ws\EnvoiMail.aspx" />
     <Content Include="ws\getRequests.aspx" />
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
@@ -251,6 +253,13 @@
     </Compile>
     <Compile Include="ws\editRequest.aspx.designer.cs">
       <DependentUpon>editRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\EnvoiMail.aspx.cs">
+      <DependentUpon>EnvoiMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\EnvoiMail.aspx.designer.cs">
+      <DependentUpon>EnvoiMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\getRequests.aspx.cs">
       <DependentUpon>getRequests.aspx</DependentUpon>
