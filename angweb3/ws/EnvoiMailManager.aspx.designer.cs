@@ -10,6 +10,6 @@
 namespace angweb3.ws {
     
     
-    public partial class EnvoiMail {
+    public partial class EnvoiMailManager {
     }
 }

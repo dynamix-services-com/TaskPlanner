@@ -78,8 +78,8 @@ $("#AjoutForm").submit(function (event) {
 
 
         // Send the data using post
-        var posting = $.post(url, {
-            Title: Title, Type: Type, Description: Description, ClientCode: ClientCode,
+    var posting = $.post(url, {
+        Title: Title, Type: Type, Description: Description, ClientCode: ClientCode,
             ProjectCode: ProjectCode, date_Echeance: Date_deadline, Client: Client/*, Photo: Photo*/
         });
 

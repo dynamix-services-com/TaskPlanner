@@ -170,6 +170,7 @@
     <Content Include="ws\Authetification.aspx" />
     <Content Include="ws\editRequest.aspx" />
     <Content Include="ws\EnvoiMail.aspx" />
+    <Content Include="ws\EnvoiMailManager.aspx" />
     <Content Include="ws\getRequests.aspx" />
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
@@ -260,6 +261,13 @@
     </Compile>
     <Compile Include="ws\EnvoiMail.aspx.designer.cs">
       <DependentUpon>EnvoiMail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\EnvoiMailManager.aspx.cs">
+      <DependentUpon>EnvoiMailManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\EnvoiMailManager.aspx.designer.cs">
+      <DependentUpon>EnvoiMailManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\getRequests.aspx.cs">
       <DependentUpon>getRequests.aspx</DependentUpon>
@@ -417,10 +425,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
+    <WebReferenceUrl Include="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\TaskPlannerWS\</RelPath>
-      <UpdateFromURL>http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
+      <UpdateFromURL>http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

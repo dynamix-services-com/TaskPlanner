@@ -228,6 +228,50 @@
           </sequence>
         </complexType>
       </element>
+      <element name="EmailNotification">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="email_Subject" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="recipient_userid" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="request_ID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EmailNotification_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="EmailNotificationManager">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="email_Subject" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="recipient_userid" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="request_ID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="EmailNotificationManager_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetRessource">
+        <complexType>
+          <sequence>
+            <element xmlns:q11="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXML" type="q11:Root" />
+            <element minOccurs="1" maxOccurs="1" name="id" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRessource_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+            <element xmlns:q12="urn:microsoft-dynamics-nav/xmlports/x50000" minOccurs="1" maxOccurs="1" name="ressourceXML" type="q12:Root" />
+          </sequence>
+        </complexType>
+      </element>
     </schema>
   </types>
   <message name="Authentification">
@@ -284,6 +328,24 @@
   <message name="GetClients_Result">
     <part name="parameters" element="tns:GetClients_Result" />
   </message>
+  <message name="EmailNotification">
+    <part name="parameters" element="tns:EmailNotification" />
+  </message>
+  <message name="EmailNotification_Result">
+    <part name="parameters" element="tns:EmailNotification_Result" />
+  </message>
+  <message name="EmailNotificationManager">
+    <part name="parameters" element="tns:EmailNotificationManager" />
+  </message>
+  <message name="EmailNotificationManager_Result">
+    <part name="parameters" element="tns:EmailNotificationManager_Result" />
+  </message>
+  <message name="GetRessource">
+    <part name="parameters" element="tns:GetRessource" />
+  </message>
+  <message name="GetRessource_Result">
+    <part name="parameters" element="tns:GetRessource_Result" />
+  </message>
   <portType name="TaskPlannerWS_Port">
     <operation name="Authentification">
       <input name="Authentification" message="tns:Authentification" />
@@ -320,6 +382,18 @@
     <operation name="GetClients">
       <input name="GetClients" message="tns:GetClients" />
       <output name="GetClients_Result" message="tns:GetClients_Result" />
+    </operation>
+    <operation name="EmailNotification">
+      <input name="EmailNotification" message="tns:EmailNotification" />
+      <output name="EmailNotification_Result" message="tns:EmailNotification_Result" />
+    </operation>
+    <operation name="EmailNotificationManager">
+      <input name="EmailNotificationManager" message="tns:EmailNotificationManager" />
+      <output name="EmailNotificationManager_Result" message="tns:EmailNotificationManager_Result" />
+    </operation>
+    <operation name="GetRessource">
+      <input name="GetRessource" message="tns:GetRessource" />
+      <output name="GetRessource_Result" message="tns:GetRessource_Result" />
     </operation>
   </portType>
   <binding name="TaskPlannerWS_Binding" type="tns:TaskPlannerWS_Port">
@@ -405,10 +479,37 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="EmailNotification">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:EmailNotification" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EmailNotification">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EmailNotification_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="EmailNotificationManager">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:EmailNotificationManager" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="EmailNotificationManager">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="EmailNotificationManager_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRessource">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRessource" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRessource">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRessource_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
   </binding>
   <service name="TaskPlannerWS">
     <port name="TaskPlannerWS_Port" binding="tns:TaskPlannerWS_Binding">
-      <address location="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

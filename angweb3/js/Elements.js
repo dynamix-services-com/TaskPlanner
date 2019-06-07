@@ -54,30 +54,30 @@ var DetMissDatatable = null;
 // Put the results in a div
 getting.done(function (data) {
     var json = JSON.parse(data)
-    getTypeList(1,function (jsonType) {
-    console.log(json);
-    parsedJson = json;
-    let tbody = "<tbody>";
-    $.each(json, function (index, Task) {
-        // alert(index + ": " + value);
-        tbody += "<tr>";
-        tbody += "<td>" + Task.ID + "</td>";
-        tbody += "<td>" + Task.Type + "</td>";
-        tbody += "<td>" + Task.Status + "</td>";
-        tbody += "<td>" + Task.Titre + "</td>";
-        tbody += "<td>" + Task.Description + "</td>";
-        tbody += "<td>" + Task.Nom_Cree_Par + "</td>";
-        tbody += "<td>" + Task.Date_Creation + "</td>";
-        tbody += "<td>" + Task.Nom_Client + "</td>";
-        tbody += "<td>" + Task.Nom_Projet + "</td>";
-        tbody += "<td>" + Task.Date_Echeance + "</td>";
-        tbody += "</tr>";
-    });
+    getTypeList(1, function (jsonType) {
+        console.log(json);
+        parsedJson = json;
+        let tbody = "<tbody>";
+        $.each(json, function (index, Task) {
+            // alert(index + ": " + value);
+            tbody += "<tr>";
+            tbody += "<td>" + Task.ID + "</td>";
+            tbody += "<td>" + Task.Type + "</td>";
+            tbody += "<td>" + Task.Status + "</td>";
+            tbody += "<td>" + Task.Titre + "</td>";
+            tbody += "<td>" + Task.Description + "</td>";
+            tbody += "<td>" + Task.Nom_Cree_Par + "</td>";
+            tbody += "<td>" + Task.Date_Creation + "</td>";
+            tbody += "<td>" + Task.Nom_Client + "</td>";
+            tbody += "<td>" + Task.Nom_Projet + "</td>";
+            tbody += "<td>" + Task.Date_Echeance + "</td>";
+            tbody += "</tr>";
+        });
 
-    tbody += "</tbody>";
-    // $('#TaskList').append(tbody);
+        tbody += "</tbody>";
+        // $('#TaskList').append(tbody);
 
-    
+
         DetMissDatatable = $('#TaskList').DataTable({
             searching: true,
             destroy: true,
@@ -94,14 +94,14 @@ getting.done(function (data) {
                 { "className": "reqNp", "data": "Nom_Projet" },
                 { "className": "reqDe", "data": "Date_Echeance" },
                 { "className": "reqDev", "data": null },
-               /* {
-                    "data": "Action", 'render': function (data, type, row, meta) {
-                      //  getRessources(1,row, function (opt) { 
-                        return '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ' + opt + '</select>';
-                      //  });
-
-                    }
-                },*/
+                /* {
+                     "data": "Action", 'render': function (data, type, row, meta) {
+                       //  getRessources(1,row, function (opt) { 
+                         return '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ' + opt + '</select>';
+                       //  });
+ 
+                     }
+                 },*/
                 {
                     "data": "Action", 'render': function (data, type, row, meta) {
 
@@ -109,9 +109,10 @@ getting.done(function (data) {
 
 
                     }
-
-
                 }
+               
+                
+
             ],
             "createdRow": function (row, data, dataIndex) {
                 //console.log(row);

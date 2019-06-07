@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EnvoiMail.aspx.cs" Inherits="angweb3.ws.EnvoiMail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EnvoiMailManager.aspx.cs" Inherits="angweb3.ws.EnvoiMailManager" %>
 
 <%
 
@@ -16,8 +16,7 @@
 
     angweb3.TaskPlannerWS.Root RT = new angweb3.TaskPlannerWS.Root();
 
-    TS.EmailNotification(sujet, UserID, idReq);
-
+    TS.EmailNotificationManager(sujet,UserID,idReq);
 
 
 
