@@ -121,6 +121,7 @@
     <Content Include="js\main.js" />
     <Content Include="js\modifTasks.js" />
     <Content Include="js\modifTasksDev.js" />
+    <Content Include="js\Stat.js" />
     <Content Include="js\Tasks.js" />
     <Content Include="js\widgets.js" />
     <Content Include="login.aspx" />

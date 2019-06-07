@@ -27,10 +27,6 @@
         //Mission = "";
         while (i < j)
         {
-
-
-
-
             //>>>AHM md5 crypt password
             /*
                                 System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
@@ -87,7 +83,6 @@
 
 
                    ddm = sddm + " " + timeddm;
-
                }*/
 
             json += "{ \"ID\": " + "\"" + RT50001.Root50001[i].ID.ToString() +
@@ -117,26 +112,15 @@
 
             // }
 
-
-
-
-
-
             i++;
         }
         json += " ]";
         Response.Write(json);
-
-
     }
+
     else
     {
-
         Response.Write("[]");
     }
-
-
-
-
-         %>
+%>
  

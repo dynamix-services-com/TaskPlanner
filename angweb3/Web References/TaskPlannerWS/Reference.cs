@@ -47,6 +47,12 @@ namespace angweb3.TaskPlannerWS {
         
         private System.Threading.SendOrPostCallback GetClientsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback EmailNotificationOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback EmailNotificationManagerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRessourceOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +117,15 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event GetClientsCompletedEventHandler GetClientsCompleted;
+        
+        /// <remarks/>
+        public event EmailNotificationCompletedEventHandler EmailNotificationCompleted;
+        
+        /// <remarks/>
+        public event EmailNotificationManagerCompletedEventHandler EmailNotificationManagerCompleted;
+        
+        /// <remarks/>
+        public event GetRessourceCompletedEventHandler GetRessourceCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -420,6 +435,103 @@ namespace angweb3.TaskPlannerWS {
             if ((this.GetClientsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetClientsCompleted(this, new GetClientsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:EmailNotification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="EmailNotification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void EmailNotification(string email_Subject, string recipient_userid, string request_ID) {
+            this.Invoke("EmailNotification", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID});
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationAsync(string email_Subject, string recipient_userid, string request_ID) {
+            this.EmailNotificationAsync(email_Subject, recipient_userid, request_ID, null);
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationAsync(string email_Subject, string recipient_userid, string request_ID, object userState) {
+            if ((this.EmailNotificationOperationCompleted == null)) {
+                this.EmailNotificationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEmailNotificationOperationCompleted);
+            }
+            this.InvokeAsync("EmailNotification", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID}, this.EmailNotificationOperationCompleted, userState);
+        }
+        
+        private void OnEmailNotificationOperationCompleted(object arg) {
+            if ((this.EmailNotificationCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EmailNotificationCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:EmailNotificationManager", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="EmailNotificationManager_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void EmailNotificationManager(string email_Subject, string recipient_userid, string request_ID) {
+            this.Invoke("EmailNotificationManager", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID});
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationManagerAsync(string email_Subject, string recipient_userid, string request_ID) {
+            this.EmailNotificationManagerAsync(email_Subject, recipient_userid, request_ID, null);
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationManagerAsync(string email_Subject, string recipient_userid, string request_ID, object userState) {
+            if ((this.EmailNotificationManagerOperationCompleted == null)) {
+                this.EmailNotificationManagerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEmailNotificationManagerOperationCompleted);
+            }
+            this.InvokeAsync("EmailNotificationManager", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID}, this.EmailNotificationManagerOperationCompleted, userState);
+        }
+        
+        private void OnEmailNotificationManagerOperationCompleted(object arg) {
+            if ((this.EmailNotificationManagerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EmailNotificationManagerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRessource", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetRessource_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetRessource(ref Root ressourceXML, string id) {
+            object[] results = this.Invoke("GetRessource", new object[] {
+                        ressourceXML,
+                        id});
+            ressourceXML = ((Root)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRessourceAsync(Root ressourceXML, string id) {
+            this.GetRessourceAsync(ressourceXML, id, null);
+        }
+        
+        /// <remarks/>
+        public void GetRessourceAsync(Root ressourceXML, string id, object userState) {
+            if ((this.GetRessourceOperationCompleted == null)) {
+                this.GetRessourceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRessourceOperationCompleted);
+            }
+            this.InvokeAsync("GetRessource", new object[] {
+                        ressourceXML,
+                        id}, this.GetRessourceOperationCompleted, userState);
+        }
+        
+        private void OnGetRessourceOperationCompleted(object arg) {
+            if ((this.GetRessourceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRessourceCompleted(this, new GetRessourceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1242,6 +1354,48 @@ namespace angweb3.TaskPlannerWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Root3)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void EmailNotificationCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void EmailNotificationManagerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GetRessourceCompletedEventHandler(object sender, GetRessourceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRessourceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRessourceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root ressourceXML {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root)(this.results[1]));
             }
         }
     }

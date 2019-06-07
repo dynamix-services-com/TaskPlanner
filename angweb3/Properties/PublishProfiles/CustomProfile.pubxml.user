@@ -142,13 +142,13 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="bin/angweb3.dll">
-      <publishTime>06/07/2019 00:14:50</publishTime>
+      <publishTime>06/07/2019 23:36:01</publishTime>
     </File>
     <File Include="bin/angweb3.pdb">
-      <publishTime>06/07/2019 00:14:50</publishTime>
+      <publishTime>06/07/2019 23:36:01</publishTime>
     </File>
     <File Include="bin/angweb3.XmlSerializers.dll">
-      <publishTime>06/07/2019 00:14:51</publishTime>
+      <publishTime>06/07/2019 23:36:06</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -298,7 +298,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="client.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 16:16:12</publishTime>
     </File>
     <File Include="css/main.css">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -307,13 +307,13 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="developer.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 22:59:43</publishTime>
     </File>
     <File Include="developertabs.html">
-      <publishTime>06/07/2019 00:14:26</publishTime>
+      <publishTime>06/07/2019 23:36:00</publishTime>
     </File>
     <File Include="elements.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:00:39</publishTime>
     </File>
     <File Include="fonts/font-awesome-4.7.0/css/font-awesome.css">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -502,7 +502,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="forms.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:00:55</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>06/06/2019 23:46:18</publishTime>
@@ -517,10 +517,10 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:01:26</publishTime>
     </File>
     <File Include="js/AjoutRequest.js">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 16:15:37</publishTime>
     </File>
     <File Include="js/elements.js">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -529,7 +529,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="js/Global.js">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 16:10:05</publishTime>
     </File>
     <File Include="js/js-sha256.js">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -543,11 +543,14 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <File Include="js/modifTasksDev.js">
       <publishTime>06/07/2019 00:14:44</publishTime>
     </File>
+    <File Include="js/Stat.js">
+      <publishTime>06/07/2019 10:23:18</publishTime>
+    </File>
     <File Include="js/Tasks.js">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:36:00</publishTime>
     </File>
     <File Include="js/widgets.js">
-      <publishTime>06/07/2019 00:13:46</publishTime>
+      <publishTime>06/07/2019 09:33:05</publishTime>
     </File>
     <File Include="login.aspx">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -559,16 +562,16 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:18</publishTime>
     </File>
     <File Include="modifData.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:01:46</publishTime>
     </File>
     <File Include="panels.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:02:04</publishTime>
     </File>
     <File Include="route.html">
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="tasks.html">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:02:21</publishTime>
     </File>
     <File Include="vendor/animate/animate.css">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -679,25 +682,25 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/06/2019 23:46:19</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root.datasource">
-      <publishTime>06/07/2019 00:09:35</publishTime>
+      <publishTime>06/07/2019 23:26:49</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root1.datasource">
-      <publishTime>06/07/2019 00:09:35</publishTime>
+      <publishTime>06/07/2019 23:26:49</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root156.datasource">
       <publishTime>03/06/2019 12:18:46</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root2.datasource">
-      <publishTime>06/07/2019 00:09:35</publishTime>
+      <publishTime>06/07/2019 23:26:49</publishTime>
     </File>
     <File Include="Web References/TaskPlannerWS/Root3.datasource">
-      <publishTime>06/07/2019 00:09:35</publishTime>
+      <publishTime>06/07/2019 23:26:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/07/2019 00:11:07</publishTime>
+      <publishTime>06/07/2019 22:52:39</publishTime>
     </File>
     <File Include="widgets.html">
-      <publishTime>06/07/2019 00:14:06</publishTime>
+      <publishTime>06/07/2019 23:03:40</publishTime>
     </File>
     <File Include="ws/Affectation.aspx">
       <publishTime>06/06/2019 23:46:19</publishTime>
@@ -721,7 +724,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
       <publishTime>06/03/2019 13:37:17</publishTime>
     </File>
     <File Include="ws/getRequests.aspx">
-      <publishTime>06/06/2019 23:46:19</publishTime>
+      <publishTime>06/07/2019 23:07:25</publishTime>
     </File>
     <File Include="ws/getRequestStatus.aspx">
       <publishTime>06/06/2019 23:46:19</publishTime>
