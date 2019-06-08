@@ -2,6 +2,11 @@
 url_Projects = "ws/Projects.aspx";
 url_Clients = "ws/Clients.aspx";
 
+
+(function ($) {
+    checkSession(function (json) {
+    });
+});
 //
 var getting_Project = $.get(url_Projects, { Project: "" });
 getting_Project.done(function (data) {
@@ -15,7 +20,7 @@ getting_Project.done(function (data) {
 function FillSelectBox(elementID, OptList) {
     $("#" + elementID).append(OptList);
 }
-
+/*
 var getting_Client = $.get(url_Clients, { Client: "" });
 getting_Client.done(function (data) {
     var json = JSON.parse(data)
@@ -24,7 +29,7 @@ getting_Client.done(function (data) {
     $.each(json, function (index, Task) {
         FillSelectBox("Client", '<option value="' + Task.Client + '" >' + Task.Client + '</option>')
     })
-})
+})*/
 function FillSelectBox(elementID, OptList) {
     $("#" + elementID).append(OptList);
 }
@@ -51,27 +56,7 @@ $("#AjoutForm").submit(function (event) {
 
 
 
-    checkSession(function (json) {
-
-        if (json !== null) {
-            ClientCode = json.No;
-            if (json.Type === "Client") {
-                /* ClientCode = ' ' + ClientCode + ' : '
-                $('#ClientCode').append(ClientCode);
-            } 
-            else if (json.Type === "Manager" || json.Type === "Developer") {
-
-                Client = $("#Client").val();
-
-            }*/
-
-            }
-
-            }
-
-
-
-        });
+ 
       
         /*var SelectElem_ProjectCode = document.getElementById('ProjectCode');
         ProjectCode = SelectElem_ProjectCode.selectedIndex;*/

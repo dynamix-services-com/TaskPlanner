@@ -108,11 +108,7 @@ getting.done(function (data) {
      });
     
     
-         
-
-
-
-
+        
 $('#TaskList').on('click', 'tr', function (e, row, $element) {
    
     
