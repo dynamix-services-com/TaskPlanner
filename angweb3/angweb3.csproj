@@ -95,6 +95,7 @@
     <Content Include="assets\js\respond.min.js" />
     <Content Include="checkSession.aspx" />
     <Content Include="client.html" />
+    <Content Include="css\bootstrap-year-calendar.min.css" />
     <Content Include="css\main.css" />
     <Content Include="css\util.css" />
     <Content Include="developer.html" />
@@ -107,6 +108,7 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="FormDev.html" />
     <Content Include="forms.html" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar-011.jpg" />
@@ -114,18 +116,23 @@
     <Content Include="images\avatar-01.jpg" />
     <Content Include="index.html" />
     <Content Include="js\AjoutRequest.js" />
+    <Content Include="js\bootstrap-year-calendar.js" />
     <Content Include="js\Elements.js" />
+    <Content Include="js\FormDev.js" />
     <Content Include="js\forms.js" />
     <Content Include="js\Global.js" />
     <Content Include="js\js-sha256.js" />
     <Content Include="js\main.js" />
+    <Content Include="js\ModifManager.js" />
     <Content Include="js\modifTasks.js" />
+    <Content Include="js\modifTasksDev.js" />
     <Content Include="js\Tasks.js" />
     <Content Include="js\widgets.js" />
     <Content Include="login.aspx" />
     <Content Include="login.html" />
     <Content Include="Logout.aspx" />
     <Content Include="modifData.html" />
+    <Content Include="modifManager.html" />
     <Content Include="panels.html" />
     <Content Include="route.html" />
     <Content Include="tasks.html" />
@@ -170,7 +177,9 @@
     <Content Include="ws\Authetification.aspx" />
     <Content Include="ws\editRequest.aspx" />
     <Content Include="ws\EnvoiMail.aspx" />
+    <Content Include="ws\EnvoiMailClient.aspx" />
     <Content Include="ws\EnvoiMailManager.aspx" />
+    <Content Include="ws\getCalendarRequests.aspx" />
     <Content Include="ws\getRequests.aspx" />
     <Content Include="ws\getRequestStatus.aspx" />
     <Content Include="ws\getRequestType.aspx" />
@@ -262,12 +271,26 @@
     <Compile Include="ws\EnvoiMail.aspx.designer.cs">
       <DependentUpon>EnvoiMail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ws\EnvoiMailClient.aspx.cs">
+      <DependentUpon>EnvoiMailClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\EnvoiMailClient.aspx.designer.cs">
+      <DependentUpon>EnvoiMailClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ws\EnvoiMailManager.aspx.cs">
       <DependentUpon>EnvoiMailManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ws\EnvoiMailManager.aspx.designer.cs">
       <DependentUpon>EnvoiMailManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ws\getCalendarRequests.aspx.cs">
+      <DependentUpon>getCalendarRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ws\getCalendarRequests.aspx.designer.cs">
+      <DependentUpon>getCalendarRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="ws\getRequests.aspx.cs">
       <DependentUpon>getRequests.aspx</DependentUpon>
@@ -425,10 +448,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
+    <WebReferenceUrl Include="http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\TaskPlannerWS\</RelPath>
-      <UpdateFromURL>http://41.230.21.20:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
+      <UpdateFromURL>http://192.168.100.100:20047/DynamixProjet/WS/Dynamix-Project/Codeunit/TaskPlannerWS</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

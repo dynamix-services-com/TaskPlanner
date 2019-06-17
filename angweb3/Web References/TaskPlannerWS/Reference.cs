@@ -29,19 +29,19 @@ namespace angweb3.TaskPlannerWS {
     [System.Web.Services.WebServiceBindingAttribute(Name="TaskPlannerWS_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS")]
     public partial class TaskPlannerWS : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback AuthentificationOperationCompleted;
+        private System.Threading.SendOrPostCallback AffectationOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetRequestListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetTypeListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AuthentificationOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback UpdateRequestOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetTypeListOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback AffectationOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetProjectsOperationCompleted;
         
@@ -52,6 +52,8 @@ namespace angweb3.TaskPlannerWS {
         private System.Threading.SendOrPostCallback EmailNotificationManagerOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetRessourceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback EmailNotificationClientOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -92,10 +94,16 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public event AuthentificationCompletedEventHandler AuthentificationCompleted;
+        public event AffectationCompletedEventHandler AffectationCompleted;
         
         /// <remarks/>
         public event GetRequestListCompletedEventHandler GetRequestListCompleted;
+        
+        /// <remarks/>
+        public event GetTypeListCompletedEventHandler GetTypeListCompleted;
+        
+        /// <remarks/>
+        public event AuthentificationCompletedEventHandler AuthentificationCompleted;
         
         /// <remarks/>
         public event DeleteRequestCompletedEventHandler DeleteRequestCompleted;
@@ -105,12 +113,6 @@ namespace angweb3.TaskPlannerWS {
         
         /// <remarks/>
         public event UpdateRequestCompletedEventHandler UpdateRequestCompleted;
-        
-        /// <remarks/>
-        public event GetTypeListCompletedEventHandler GetTypeListCompleted;
-        
-        /// <remarks/>
-        public event AffectationCompletedEventHandler AffectationCompleted;
         
         /// <remarks/>
         public event GetProjectsCompletedEventHandler GetProjectsCompleted;
@@ -128,24 +130,127 @@ namespace angweb3.TaskPlannerWS {
         public event GetRessourceCompletedEventHandler GetRessourceCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public event EmailNotificationClientCompletedEventHandler EmailNotificationClientCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Affectation", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Affectation_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool Authentification(string login, string password, ref Root ressourceXml) {
-            object[] results = this.Invoke("Authentification", new object[] {
-                        login,
-                        password,
-                        ressourceXml});
-            ressourceXml = ((Root)(results[1]));
+        public bool Affectation(int id, string developpeur) {
+            object[] results = this.Invoke("Affectation", new object[] {
+                        id,
+                        developpeur});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void AuthentificationAsync(string login, string password, Root ressourceXml) {
+        public void AffectationAsync(int id, string developpeur) {
+            this.AffectationAsync(id, developpeur, null);
+        }
+        
+        /// <remarks/>
+        public void AffectationAsync(int id, string developpeur, object userState) {
+            if ((this.AffectationOperationCompleted == null)) {
+                this.AffectationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAffectationOperationCompleted);
+            }
+            this.InvokeAsync("Affectation", new object[] {
+                        id,
+                        developpeur}, this.AffectationOperationCompleted, userState);
+        }
+        
+        private void OnAffectationOperationCompleted(object arg) {
+            if ((this.AffectationCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AffectationCompleted(this, new AffectationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRequestList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetRequestList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetRequestList(ref Root requestsXml, string iduser, string client) {
+            object[] results = this.Invoke("GetRequestList", new object[] {
+                        requestsXml,
+                        iduser,
+                        client});
+            requestsXml = ((Root)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRequestListAsync(Root requestsXml, string iduser, string client) {
+            this.GetRequestListAsync(requestsXml, iduser, client, null);
+        }
+        
+        /// <remarks/>
+        public void GetRequestListAsync(Root requestsXml, string iduser, string client, object userState) {
+            if ((this.GetRequestListOperationCompleted == null)) {
+                this.GetRequestListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRequestListOperationCompleted);
+            }
+            this.InvokeAsync("GetRequestList", new object[] {
+                        requestsXml,
+                        iduser,
+                        client}, this.GetRequestListOperationCompleted, userState);
+        }
+        
+        private void OnGetRequestListOperationCompleted(object arg) {
+            if ((this.GetRequestListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRequestListCompleted(this, new GetRequestListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetTypeList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetTypeList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool GetTypeList(ref Root1 requestXML, int type) {
+            object[] results = this.Invoke("GetTypeList", new object[] {
+                        requestXML,
+                        type});
+            requestXML = ((Root1)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type) {
+            this.GetTypeListAsync(requestXML, type, null);
+        }
+        
+        /// <remarks/>
+        public void GetTypeListAsync(Root1 requestXML, int type, object userState) {
+            if ((this.GetTypeListOperationCompleted == null)) {
+                this.GetTypeListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTypeListOperationCompleted);
+            }
+            this.InvokeAsync("GetTypeList", new object[] {
+                        requestXML,
+                        type}, this.GetTypeListOperationCompleted, userState);
+        }
+        
+        private void OnGetTypeListOperationCompleted(object arg) {
+            if ((this.GetTypeListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTypeListCompleted(this, new GetTypeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Authentification", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Authentification_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool Authentification(string login, string password, ref Root1 ressourceXml) {
+            object[] results = this.Invoke("Authentification", new object[] {
+                        login,
+                        password,
+                        ressourceXml});
+            ressourceXml = ((Root1)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AuthentificationAsync(string login, string password, Root1 ressourceXml) {
             this.AuthentificationAsync(login, password, ressourceXml, null);
         }
         
         /// <remarks/>
-        public void AuthentificationAsync(string login, string password, Root ressourceXml, object userState) {
+        public void AuthentificationAsync(string login, string password, Root1 ressourceXml, object userState) {
             if ((this.AuthentificationOperationCompleted == null)) {
                 this.AuthentificationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAuthentificationOperationCompleted);
             }
@@ -159,37 +264,6 @@ namespace angweb3.TaskPlannerWS {
             if ((this.AuthentificationCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AuthentificationCompleted(this, new AuthentificationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRequestList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetRequestList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool GetRequestList(ref Root1 requestsXml) {
-            object[] results = this.Invoke("GetRequestList", new object[] {
-                        requestsXml});
-            requestsXml = ((Root1)(results[1]));
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetRequestListAsync(Root1 requestsXml) {
-            this.GetRequestListAsync(requestsXml, null);
-        }
-        
-        /// <remarks/>
-        public void GetRequestListAsync(Root1 requestsXml, object userState) {
-            if ((this.GetRequestListOperationCompleted == null)) {
-                this.GetRequestListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRequestListOperationCompleted);
-            }
-            this.InvokeAsync("GetRequestList", new object[] {
-                        requestsXml}, this.GetRequestListOperationCompleted, userState);
-        }
-        
-        private void OnGetRequestListOperationCompleted(object arg) {
-            if ((this.GetRequestListCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetRequestListCompleted(this, new GetRequestListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -308,94 +382,31 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetTypeList", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetTypeList_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool GetTypeList(ref Root requestXML, int type) {
-            object[] results = this.Invoke("GetTypeList", new object[] {
-                        requestXML,
-                        type});
-            requestXML = ((Root)(results[1]));
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetTypeListAsync(Root requestXML, int type) {
-            this.GetTypeListAsync(requestXML, type, null);
-        }
-        
-        /// <remarks/>
-        public void GetTypeListAsync(Root requestXML, int type, object userState) {
-            if ((this.GetTypeListOperationCompleted == null)) {
-                this.GetTypeListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTypeListOperationCompleted);
-            }
-            this.InvokeAsync("GetTypeList", new object[] {
-                        requestXML,
-                        type}, this.GetTypeListOperationCompleted, userState);
-        }
-        
-        private void OnGetTypeListOperationCompleted(object arg) {
-            if ((this.GetTypeListCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetTypeListCompleted(this, new GetTypeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:Affectation", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="Affectation_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool Affectation(int id, string developpeur) {
-            object[] results = this.Invoke("Affectation", new object[] {
-                        id,
-                        developpeur});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void AffectationAsync(int id, string developpeur) {
-            this.AffectationAsync(id, developpeur, null);
-        }
-        
-        /// <remarks/>
-        public void AffectationAsync(int id, string developpeur, object userState) {
-            if ((this.AffectationOperationCompleted == null)) {
-                this.AffectationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAffectationOperationCompleted);
-            }
-            this.InvokeAsync("Affectation", new object[] {
-                        id,
-                        developpeur}, this.AffectationOperationCompleted, userState);
-        }
-        
-        private void OnAffectationOperationCompleted(object arg) {
-            if ((this.AffectationCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AffectationCompleted(this, new AffectationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetProjects", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetProjects_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool GetProjects(string no, ref Root2 xML) {
+        public bool GetProjects(string no, ref Root2 xML, string client) {
             object[] results = this.Invoke("GetProjects", new object[] {
                         no,
-                        xML});
+                        xML,
+                        client});
             xML = ((Root2)(results[1]));
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void GetProjectsAsync(string no, Root2 xML) {
-            this.GetProjectsAsync(no, xML, null);
+        public void GetProjectsAsync(string no, Root2 xML, string client) {
+            this.GetProjectsAsync(no, xML, client, null);
         }
         
         /// <remarks/>
-        public void GetProjectsAsync(string no, Root2 xML, object userState) {
+        public void GetProjectsAsync(string no, Root2 xML, string client, object userState) {
             if ((this.GetProjectsOperationCompleted == null)) {
                 this.GetProjectsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProjectsOperationCompleted);
             }
             this.InvokeAsync("GetProjects", new object[] {
                         no,
-                        xML}, this.GetProjectsOperationCompleted, userState);
+                        xML,
+                        client}, this.GetProjectsOperationCompleted, userState);
         }
         
         private void OnGetProjectsOperationCompleted(object arg) {
@@ -505,21 +516,21 @@ namespace angweb3.TaskPlannerWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:GetRessource", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="GetRessource_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool GetRessource(ref Root ressourceXML, string id) {
+        public bool GetRessource(ref Root1 ressourceXML, string id) {
             object[] results = this.Invoke("GetRessource", new object[] {
                         ressourceXML,
                         id});
-            ressourceXML = ((Root)(results[1]));
+            ressourceXML = ((Root1)(results[1]));
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void GetRessourceAsync(Root ressourceXML, string id) {
+        public void GetRessourceAsync(Root1 ressourceXML, string id) {
             this.GetRessourceAsync(ressourceXML, id, null);
         }
         
         /// <remarks/>
-        public void GetRessourceAsync(Root ressourceXML, string id, object userState) {
+        public void GetRessourceAsync(Root1 ressourceXML, string id, object userState) {
             if ((this.GetRessourceOperationCompleted == null)) {
                 this.GetRessourceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRessourceOperationCompleted);
             }
@@ -532,6 +543,38 @@ namespace angweb3.TaskPlannerWS {
             if ((this.GetRessourceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetRessourceCompleted(this, new GetRessourceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS:EmailNotificationClient", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", ResponseElementName="EmailNotificationClient_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/TaskPlannerWS", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void EmailNotificationClient(string email_Subject, string recipient_userid, string request_ID) {
+            this.Invoke("EmailNotificationClient", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID});
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationClientAsync(string email_Subject, string recipient_userid, string request_ID) {
+            this.EmailNotificationClientAsync(email_Subject, recipient_userid, request_ID, null);
+        }
+        
+        /// <remarks/>
+        public void EmailNotificationClientAsync(string email_Subject, string recipient_userid, string request_ID, object userState) {
+            if ((this.EmailNotificationClientOperationCompleted == null)) {
+                this.EmailNotificationClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEmailNotificationClientOperationCompleted);
+            }
+            this.InvokeAsync("EmailNotificationClient", new object[] {
+                        email_Subject,
+                        recipient_userid,
+                        request_ID}, this.EmailNotificationClientOperationCompleted, userState);
+        }
+        
+        private void OnEmailNotificationClientOperationCompleted(object arg) {
+            if ((this.EmailNotificationClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EmailNotificationClientCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -559,238 +602,21 @@ namespace angweb3.TaskPlannerWS {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50000")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50001")]
     public partial class Root {
         
-        private Root156[] root156Field;
+        private Root50001[] root50001Field;
         
         private string[] textField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Root156")]
-        public Root156[] Root156 {
+        [System.Xml.Serialization.XmlElementAttribute("Root50001")]
+        public Root50001[] Root50001 {
             get {
-                return this.root156Field;
+                return this.root50001Field;
             }
             set {
-                this.root156Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string[] Text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50000")]
-    public partial class Root156 {
-        
-        private string noField;
-        
-        private string typeField;
-        
-        private string nameField;
-        
-        private string loginField;
-        
-        private string dDCField;
-        
-        private string emailField;
-        
-        /// <remarks/>
-        public string No {
-            get {
-                return this.noField;
-            }
-            set {
-                this.noField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Login {
-            get {
-                return this.loginField;
-            }
-            set {
-                this.loginField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DDC {
-            get {
-                return this.dDCField;
-            }
-            set {
-                this.dDCField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Email {
-            get {
-                return this.emailField;
-            }
-            set {
-                this.emailField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
-    public partial class Root50003 {
-        
-        private string idField;
-        
-        private string nomField;
-        
-        /// <remarks/>
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string nom {
-            get {
-                return this.nomField;
-            }
-            set {
-                this.nomField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
-    public partial class Root3 {
-        
-        private Root50003[] root50003Field;
-        
-        private string[] textField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Root50003")]
-        public Root50003[] Root50003 {
-            get {
-                return this.root50003Field;
-            }
-            set {
-                this.root50003Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string[] Text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
-    public partial class Root50002 {
-        
-        private string idField;
-        
-        private string projectField;
-        
-        /// <remarks/>
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Project {
-            get {
-                return this.projectField;
-            }
-            set {
-                this.projectField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
-    public partial class Root2 {
-        
-        private Root50002[] root50002Field;
-        
-        private string[] textField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Root50002")]
-        public Root50002[] Root50002 {
-            get {
-                return this.root50002Field;
-            }
-            set {
-                this.root50002Field = value;
+                this.root50001Field = value;
             }
         }
         
@@ -1054,21 +880,238 @@ namespace angweb3.TaskPlannerWS {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50001")]
-    public partial class Root1 {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
+    public partial class Root50003 {
         
-        private Root50001[] root50001Field;
+        private string idField;
+        
+        private string nomField;
+        
+        /// <remarks/>
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string nom {
+            get {
+                return this.nomField;
+            }
+            set {
+                this.nomField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50003")]
+    public partial class Root3 {
+        
+        private Root50003[] root50003Field;
         
         private string[] textField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Root50001")]
-        public Root50001[] Root50001 {
+        [System.Xml.Serialization.XmlElementAttribute("Root50003")]
+        public Root50003[] Root50003 {
             get {
-                return this.root50001Field;
+                return this.root50003Field;
             }
             set {
-                this.root50001Field = value;
+                this.root50003Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
+    public partial class Root50002 {
+        
+        private string idField;
+        
+        private string projectField;
+        
+        /// <remarks/>
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Project {
+            get {
+                return this.projectField;
+            }
+            set {
+                this.projectField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50002")]
+    public partial class Root2 {
+        
+        private Root50002[] root50002Field;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Root50002")]
+        public Root50002[] Root50002 {
+            get {
+                return this.root50002Field;
+            }
+            set {
+                this.root50002Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x50000")]
+    public partial class Root156 {
+        
+        private string noField;
+        
+        private string typeField;
+        
+        private string nameField;
+        
+        private string loginField;
+        
+        private string dDCField;
+        
+        private string emailField;
+        
+        /// <remarks/>
+        public string No {
+            get {
+                return this.noField;
+            }
+            set {
+                this.noField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Login {
+            get {
+                return this.loginField;
+            }
+            set {
+                this.loginField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DDC {
+            get {
+                return this.dDCField;
+            }
+            set {
+                this.dDCField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Root", Namespace="urn:microsoft-dynamics-nav/xmlports/x50000")]
+    public partial class Root1 {
+        
+        private Root156[] root156Field;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Root156")]
+        public Root156[] Root156 {
+            get {
+                return this.root156Field;
+            }
+            set {
+                this.root156Field = value;
             }
         }
         
@@ -1086,17 +1129,17 @@ namespace angweb3.TaskPlannerWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void AuthentificationCompletedEventHandler(object sender, AuthentificationCompletedEventArgs e);
+    public delegate void AffectationCompletedEventHandler(object sender, AffectationCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AuthentificationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AffectationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal AuthentificationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal AffectationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1106,14 +1149,6 @@ namespace angweb3.TaskPlannerWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public Root ressourceXml {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Root)(this.results[1]));
             }
         }
     }
@@ -1144,7 +1179,75 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public Root1 requestsXml {
+        public Root requestsXml {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetTypeListCompletedEventHandler(object sender, GetTypeListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTypeListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTypeListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root1 requestXML {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Root1)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void AuthentificationCompletedEventHandler(object sender, AuthentificationCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AuthentificationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AuthentificationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public Root1 ressourceXml {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Root1)(this.results[1]));
@@ -1217,66 +1320,6 @@ namespace angweb3.TaskPlannerWS {
         private object[] results;
         
         internal UpdateRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void GetTypeListCompletedEventHandler(object sender, GetTypeListCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetTypeListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetTypeListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public Root requestXML {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Root)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void AffectationCompletedEventHandler(object sender, AffectationCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AffectationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal AffectationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1392,13 +1435,17 @@ namespace angweb3.TaskPlannerWS {
         }
         
         /// <remarks/>
-        public Root ressourceXML {
+        public Root1 ressourceXML {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((Root)(this.results[1]));
+                return ((Root1)(this.results[1]));
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void EmailNotificationClientCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

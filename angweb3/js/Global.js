@@ -19,7 +19,7 @@ $("#Logout").on('click', function (event) {
 
 function checkSession(callback) {
     var posting = $.post('/checkSession.aspx', {});
-   
+
     // Put the results in a div
     posting.done(function (data) {
         json = JSON.parse(data);

@@ -10,6 +10,6 @@
 namespace angweb3.ws {
     
     
-    public partial class getRequests {
+    public partial class EnvoiMailClient {
     }
 }

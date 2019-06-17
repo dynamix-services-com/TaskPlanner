@@ -3,7 +3,7 @@ url_Projects = "ws/Projects.aspx";
 url_Clients = "ws/Clients.aspx";
 
 //
-var getting_Project = $.get(url_Projects, { Project: "" });
+var getting_Project = $.get(url_Projects, { Project: "", client:'' });
 getting_Project.done(function (data) {
     var json = JSON.parse(data)
     FillSelectBox("ProjectCode", '<option value="null" disabled selected>choisir Projet...</option>')

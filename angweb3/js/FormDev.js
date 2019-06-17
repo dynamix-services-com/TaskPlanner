@@ -1,25 +1,17 @@
 ﻿url = "/ws/AjoutRequest.aspx";
 url_Projects = "ws/Projects.aspx";
 url_Clients = "ws/Clients.aspx";
-checkSession(function (json) {
 
-    if (json !== null) {
-        ClientCode = json.No;
-        var getting_Project = $.get(url_Projects, { Project: "", client: ClientCode });
-        getting_Project.done(function (data) {
-            var json = JSON.parse(data)
-            FillSelectBox("ProjectCode", '<option value="null" disabled selected>choisir Projet...</option>')
+//
+var getting_Project = $.get(url_Projects, { Project: "" });
+getting_Project.done(function (data) {
+    var json = JSON.parse(data)
+    FillSelectBox("ProjectCode", '<option value="null" disabled selected>choisir Projet...</option>')
 
-            $.each(json, function (index, Task) {
-                FillSelectBox("ProjectCode", '<option  value="' + Task.Project + '" >' + Task.Project + '</option>')
-            })
-        })
-    } else {
-        document.location.href = "/login.html";
-    }
-
+    $.each(json, function (index, Task) {
+        FillSelectBox("ProjectCode", '<option  value="' + Task.Project + '" >' + Task.Project + '</option>')
+    })
 })
-
 function FillSelectBox(elementID, OptList) {
     $("#" + elementID).append(OptList);
 }
@@ -51,7 +43,7 @@ $("#AjoutForm").submit(function (event) {
     Description = $form.find("input[name='Description']").val();
     Date_deadline = $form.find("input[name='Date_deadline']").val();
     //var Client = document.getElementById('Client');
-   // var Client = $("#Client").val();
+    var Client = $("#Client").val();
     var ProjectCode = $("#ProjectCode").val();
     // var SelectElem_ProjectCode = document.getElementById('ProjectCode');
 
@@ -63,14 +55,32 @@ $("#AjoutForm").submit(function (event) {
 
         if (json !== null) {
             ClientCode = json.No;
-          
+            if (json.Type === "Client") {
+                /* ClientCode = ' ' + ClientCode + ' : '
+                $('#ClientCode').append(ClientCode);
+            } 
+            else if (json.Type === "Manager" || json.Type === "Developer") {
 
-    
+                Client = $("#Client").val();
 
-   
+            }*/
+
+            }
+
+        }
+
+
+
+    });
+
+    /*var SelectElem_ProjectCode = document.getElementById('ProjectCode');
+    ProjectCode = SelectElem_ProjectCode.selectedIndex;*/
+
+
+    // Send the data using post
     var posting = $.post(url, {
         Title: Title, Type: Type, Description: Description, ClientCode: ClientCode,
-        ProjectCode: ProjectCode, date_Echeance: Date_deadline, Client: ClientCode/*, Photo: Photo*/
+        ProjectCode: ProjectCode, date_Echeance: Date_deadline, Client: Client/*, Photo: Photo*/
     });
 
 
@@ -96,16 +106,4 @@ $("#AjoutForm").submit(function (event) {
 
     });
 
-
-   }
-
-  });
-
-
 });
-
-
-
-
-
-

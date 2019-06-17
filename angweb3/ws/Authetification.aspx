@@ -14,7 +14,7 @@
             TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
 
 
-            angweb3.TaskPlannerWS.Root RT156 = new angweb3.TaskPlannerWS.Root();
+            angweb3.TaskPlannerWS.Root1 RT156 = new angweb3.TaskPlannerWS.Root1();
 
             Boolean isConnected = false;
             isConnected = TS.Authentification(Login, Password, ref RT156);
@@ -34,7 +34,7 @@
             }
             else
             {
-                Response.Write("{\"error\" :\"  Invalid credentials\"}");
+                Response.Write("{\"error\" :\"  accréditation non valide\"}");
             }
 
 

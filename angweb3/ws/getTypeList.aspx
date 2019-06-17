@@ -11,7 +11,7 @@
     TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
 
 
-    angweb3.TaskPlannerWS.Root RT50000 = new angweb3.TaskPlannerWS.Root();
+    angweb3.TaskPlannerWS.Root1 RT50000 = new angweb3.TaskPlannerWS.Root1();
 
 
     bool c = TS.GetTypeList(ref RT50000, type);

@@ -1,79 +1,91 @@
-﻿url = "/ws/getRequests.Aspx";
+﻿var url = "/ws/getRequests.Aspx";
 
 // Send the data using post
-var getting = $.get(url, {});
-var DetMissDatatable = null;
-// Put the results in a div
-getting.done(function (data) {
-    var json = JSON.parse(data)
 
-    console.log(json);
-    parsedJson = json;
-    let tbody = "<tbody>";
+checkSession(function (json) {
 
-    $.each(json, function (index, Task) {
-        // alert(index + ": " + value);
-        tbody += "<tr row_id=\"'+row_id+'\">";
-        tbody += "<td class='row_data' edit_type='click' col_name='ID'>" + Task.ID + "</td>";
-        tbody += "<td class='row_data' edit_type='click' col_name='Type'>" + Task.Type + "</td>";
-        tbody += "<td class='row_data' edit_type='click' col_name='Status'>" + Task.Status + "</td>";
-        tbody += "<td class='row_data' edit_type='click' col_name='Titre'>" + Task.Titre + "</td>";
-        tbody += "<td class='row_data' edit_type='click' col_name='Description'>" + Task.Description + "</td>";
-        tbody += "<td class='row_data' edit_type='click' col_name='CreePar'>" + Task.Nom_Cree_Par + "</td>";
+    if (json !== null) {
+        ClientCode = json.No;
+        getRequestList("/ws/getRequests.Aspx", json.No);
+    } else {
+        document.location.href = "/login.html";
+    }
 
-        tbody += "</tr>";
-    });
+})
+function getRequestList(url, iduser) {
+    var getting = $.get(url, { iduser: iduser,client:'' });
+    var DetMissDatatable = null;
+    // Put the results in a div
+    getting.done(function (data) {
+        var json = JSON.parse(data)
 
-    tbody += "</tbody>";
-    // $('#TaskList').append(tbody);
+        console.log(json);
+        parsedJson = json;
+        let tbody = "<tbody>";
+
+        $.each(json, function (index, Task) {
+            // alert(index + ": " + value);
+            tbody += "<tr row_id=\"'+row_id+'\">";
+            tbody += "<td class='row_data' edit_type='click' col_name='ID'>" + Task.ID + "</td>";
+            tbody += "<td class='row_data' edit_type='click' col_name='Type'>" + Task.Type + "</td>";
+            tbody += "<td class='row_data' edit_type='click' col_name='Status'>" + Task.Status + "</td>";
+            tbody += "<td class='row_data' edit_type='click' col_name='Titre'>" + Task.Titre + "</td>";
+            tbody += "<td class='row_data' edit_type='click' col_name='Description'>" + Task.Description + "</td>";
+            tbody += "<td class='row_data' edit_type='click' col_name='CreePar'>" + Task.Nom_Cree_Par + "</td>";
+
+            tbody += "</tr>";
+        });
+
+        tbody += "</tbody>";
+        // $('#TaskList').append(tbody);
 
 
-    DetMissDatatable = $('#tabDev').DataTable({
-        searching: true,
-        destroy: true,
-        "bSort": false,
-        "data": parsedJson,
-        "columns": [
-            { "className": "reqid", "data": "ID" },
-            { "className": "reqType", "data": "Type" },
-            { "className": "reqStatus", "data": "Status" },
-            { "className": "reqTitre", "data": "Titre" },
-            { "className": "reqDesc", "data": "Description" },
-            { "className": "reqCp", "data": "Nom_Cree_Par" },
-            {
-                "data": "Action", 'render': function (data, type, row, meta) {
+        DetMissDatatable = $('#tabDev').DataTable({
+            searching: true,
+            destroy: true,
+            "bSort": false,
+            "data": parsedJson,
+            "columns": [
+                { "className": "reqid", "data": "ID" },
+                { "className": "reqType", "data": "Type" },
+                { "className": "reqStatus", "data": "Status" },
+                { "className": "reqTitre", "data": "Titre" },
+                { "className": "reqDesc", "data": "Description" },
+                { "className": "reqCp", "data": "Nom_Cree_Par" },
+                {
+                    "data": "Action", 'render': function (data, type, row, meta) {
 
-                    return ' <a class="add" title="Add" data-toggle="tooltip"  onclick="editRequest(\'' + row.ID + '\')"><i class="material-icons">&#xE03B;</i></a><a class="edit"   title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"  onclick="removeRequest(\'' + row.ID + '\')" ><i class="material-icons">&#xE872;</i></a>';
-            }
-            }
-        ],
-        "createdRow": function (row, data, dataIndex) {
-            $(row).addClass('request_' + data.ID);
-            $(row).find(".reqid").removeClass(".reqid").addClass('req_ID_' + data.ID);
-            $(row).find(".reqType").removeClass(".reqType").addClass('req_Type_' + data.ID);
-            $(row).find(".reqStatus").removeClass(".reqStatus").addClass('req_Status_' + data.ID);
-            $(row).find(".reqTitre").removeClass(".reqTitre").addClass('req_Titre_' + data.ID);
-            $(row).find(".reqDesc").removeClass(".reqDesc").addClass('req_Desc_' + data.ID);
-            $.each(JSON.parse(localStorage.getItem("Requesttype")), function (index, value) {
-                if (data.Type === value.index) {
-                    $(row).find(".reqType").html(value.value);
+                        return ' <a class="add" title="Add" data-toggle="tooltip"  onclick="editRequest(\'' + row.ID + '\')"><i class="material-icons">&#xE03B;</i></a><a class="edit"   title = "Edit" data - toggle="tooltip" > <i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"  onclick="removeRequest(\'' + row.ID + '\')" ><i class="material-icons">&#xE872;</i></a>';
+                    }
                 }
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                $(row).addClass('request_' + data.ID);
+                $(row).find(".reqid").removeClass(".reqid").addClass('req_ID_' + data.ID);
+                $(row).find(".reqType").removeClass(".reqType").addClass('req_Type_' + data.ID);
+                $(row).find(".reqStatus").removeClass(".reqStatus").addClass('req_Status_' + data.ID);
+                $(row).find(".reqTitre").removeClass(".reqTitre").addClass('req_Titre_' + data.ID);
+                $(row).find(".reqDesc").removeClass(".reqDesc").addClass('req_Desc_' + data.ID);
+                $.each(JSON.parse(localStorage.getItem("Requesttype")), function (index, value) {
+                    if (data.Type === value.index) {
+                        $(row).find(".reqType").html(value.value);
+                    }
 
-            });
+                });
 
-            $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
-                // console.log(row.Type + '  vs  ' + value.value);
-                if (data.Status === value.index) {
-                    $(row).find(".reqStatus").html(value.value);
-                }
+                $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
+                    // console.log(row.Type + '  vs  ' + value.value);
+                    if (data.Status === value.index) {
+                        $(row).find(".reqStatus").html(value.value);
+                    }
 
-            });
-        }
+                });
+            }
+        });
+
+
     });
-
-
-});
-
+}
 
 $('#tabDev').on('click', 'tr', function (e, row, $element) {
 });
@@ -91,7 +103,7 @@ function removeRequest(id) {
 
                     if (res = "ok") {
                         console.log(res);
-                 $(".request_" + id).remove();
+                        $(".request_" + id).remove();
                     } else {
                         alert(res);
                     }
@@ -117,7 +129,7 @@ function deleteRequest(id, userid) {
             alert(res);
         }
     })
-} 
+}
 
 function delete_Request(id, userid, callback) {
 
@@ -192,7 +204,7 @@ $(document).ready(function () {
 
         //   getRequestType(function (list) {
         var cellValue = '';
-        $(this).parents("tr").find("td:not(:last-child, :nth-child(6),:first-child)").each(function () {
+        $(this).parents("tr").find("td:not(:last-child, :nth-child(2), :nth-child(4), :nth-child(5), :nth-child(6),:first-child)").each(function () {
             cellValue = $(this).text();
             var classnm = $(this).attr("class").split(' ')[1];
             var clm = classnm.split("_")[1];
@@ -232,7 +244,7 @@ $(document).ready(function () {
 
             } else {
                 $(this).html('<input type="text" class="form-control input_' + clm + '_' + id + '" value="' + $(this).text() + '">');
-                }
+            }
         });
         $(this).parents("tr").find(".add, .edit").toggle();
     });

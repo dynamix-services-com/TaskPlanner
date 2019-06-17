@@ -2,10 +2,10 @@
 
 <%
     String no ="";
-
+    string client="";
 
     no = Request.Params["Project"].ToString();
-
+    client = Request.Params["client"].ToString();
 
     angweb3.TaskPlannerWS.TaskPlannerWS TS= new angweb3.TaskPlannerWS.TaskPlannerWS();
     TS.Credentials = new System.Net.NetworkCredential("taskplanner", "Dynamix@2019", "dys");
@@ -14,7 +14,7 @@
 
 
 
-    bool c = TS.GetProjects(no , ref RT);
+    bool c = TS.GetProjects(no , ref RT,client);
 
     if (c == true)    
     {

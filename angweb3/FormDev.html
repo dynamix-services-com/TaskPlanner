@@ -48,9 +48,9 @@
         <div class="divider"></div>
         <form role="search"></form>
         <ul class="nav menu">
-            <li class="active"><a href="client.html"><em class="fa fa-dashboard">&nbsp;</em> Formulaire</a></li>
-            <li><a href="tasks.html"><em class="fa fa-list">&nbsp;</em> Liste des tâches</a></li>
-            <li><a href="modifData.html"><em class="fa fa-edit">&nbsp;</em> Modifier</a></li>
+            <li><a href="developer.html"><em class="fa fa-dashboard">&nbsp;</em> Tableau de bord </a></li>
+            <li class="active"><a href="FormDev.html"><em class="fa fa-dashboard">&nbsp;</em>Formulaire </a></li>
+            <li> <a href="developertabs.html"><em class="fa fa-edit">&nbsp;</em>Modifier<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a></li>
             <li><a href="#" id="Logout"><em class="fa fa-power-off">&nbsp;</em> déconnexion</a></li>
         </ul>
     </div><!--/.sidebar-->
@@ -103,15 +103,15 @@
                         </div>
                     </div>
                 </div>
+                <!--
 
-
-               <!-- <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Code Client </label>
-                        <select class="form-control" id="Client" name="Client" required="required"></select>
-                    </div>
-                </div>-->
-
+                <div class="form-row">
+                     <div class="form-group col-md-6">
+                         <label>Client Code</label>
+                         <input type="text" class="form-control" id="Client_Code" name="Client_Code" placeholder="Client_Code" required="required">
+                     </div>
+                 </div>
+                    -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Code Projet</label>
@@ -121,16 +121,63 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Date echéance </label>
-                        <input type="date" class="form-control" id="Date_deadline" name="Date_deadline" placeholder="Date deadline" required="required">
+                        <label>Code Client </label>
+                        <select class="form-control" id="Client" name="Client" required="required"></select>
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <div class="col-sm-8 offset-sm-12">
+                        <div class="form-group">
+                            <div class="info-form">
 
+
+                                <label>Date echéance</label>
+                                <input type="date" class="form-control" id="Date_deadline" name="Date_deadline" placeholder="Date deadline" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Project state</label>
+                        <select id="Project_State" name="Project_State" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>In progress</option>
+                            <option>Fenced</option>
+                            <option>bill</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Developer team</label>
+                        <select id="Developer_team" class="form-control" name="Developer_team">
+                            <option selected>Choose...</option>
+                            <option>XXX</option>
+                            <option>YYY</option>
+                            <option>XYXY</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Project manager</label>
+                        <select id="Project_Manager" class="form-control" name="Project_Manager">
+                            <option selected>Choose...</option>
+                            <option>XXX</option>
+                            <option>YYY</option>
+                        </select>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <div class="custom-file">
+                        <label class="custom-file-label">Choose file...</label>
+                        <input type="Photo" name="Photo" class="custom-file-input" required>
+                    </div>
+                </div>-->
+                <div class="form-row">
                     <div class="form-group col-md-12">
-                        <center><button id="btn-Aj" type="submit" class="btn btn-primary"> Ajouter </button> </center><br />
+                        <center><button type="submit" class="btn btn-primary"> Ajouter </button> </center><br />
                     </div>
                 </div>
 
@@ -149,6 +196,6 @@
     <script src="assets/js/custom.js"></script>
     <script src="route.html"></script>
     <script src="/js/Global.js?v=1.1.4"></script>
-    <script src="/js/AjoutRequest.js?v=1.52"></script>
+    <script src="/js/formDev.js"></script>
 </body>
 </html>

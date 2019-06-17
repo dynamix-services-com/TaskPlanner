@@ -22,7 +22,17 @@ function getRessources(json, row, callback) {
             callback("");
         }
        
-    } else { 
+    } else
+        if ((row.Status !== "4")&&(row.developpeur !== "")) {
+            
+                $.each(json, function (index, value) {
+                    if (row.developpeur === value.code) {
+                        callback(value.nom);
+                    }
+                })
+         
+
+        }else{ 
     var opt = '<td><select class="form-control"  id="opt_Dev_' + row.ID + '"> ';
    
         if (json.length === 0) {
@@ -48,8 +58,13 @@ function getRessources(json, row, callback) {
 
 }
 }
-// Send the data using post
-var getting = $.get(url, {});
+
+
+
+checkSession(function (json) {
+
+    if (json !== null) {
+        var getting = $.get(url, { iduser: '', client:'' });
 var DetMissDatatable = null;
 // Put the results in a div
 getting.done(function (data) {
@@ -151,6 +166,8 @@ getting.done(function (data) {
             }
             });
     })//end JsonType
+ });
+}
 });
 url_affect = "/ws/Affectation.aspx";
 
@@ -162,7 +179,7 @@ function affectationRequest(id) {
 
     affectation_Request(id, developpeur, function (res) {
         if (res = "ok") {
-            alert("Request " + id + " affected");
+            alert("la tache  " + id + " est affecte au " + developpeur +"");
         } else {
             alert(res);
         }

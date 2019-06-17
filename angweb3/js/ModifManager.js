@@ -1,11 +1,11 @@
 ﻿url = "/ws/getRequests.Aspx";
 
+
 checkSession(function (json) {
 
     if (json !== null) {
-        ClientCode = json.No;
-    var getting = $.get(url, { iduser: '', client: ClientCode});
- 
+        var getting = $.get(url, { iduser: '', client: '' });
+
 getting.done(function (data) {
     var json = JSON.parse(data)
 
@@ -97,12 +97,9 @@ getting.done(function (data) {
     });
 
 
-  });
- }
 });
-
-
-
+    }
+});
 $('#tab').on('click', 'tr', function (e, row, $element) {
     //  console.log(e);
     //  console.log(row);
@@ -140,27 +137,7 @@ function removeRequest(id) {
     }
 }
 
-/*
-$('#tab tbody').on('click', '.delete', function () {
-    DetMissDatatable.row($(this).parents('tr')).remove();
-    console.log(DetMissDatatable.row($(this).parents('tr')).data());
-  //  var id = DetMissDatatable.row($(this).parents('tr')).data().ID;
-    var userid = "";
-    //console.log(DetMissDatatable.row($(this).parents('tr')));
-   
-   /* delete_Request(id, userid, function (res) {
-       
-        if (res = "ok") {
-            console.log(res);
-           // alert("Request " + id + " removed");
-            //DetMissDatatable.row($(this).parents('tr')).remove();
-            $(this).parents("tr").remove();
-        } else {
-            alert(res);
-        }
-    })
-  
-});*/
+
 
 var requestID = "";
 url_delete = "/ws/deleteRequest.aspx";
@@ -274,7 +251,7 @@ $(document).ready(function () {
 
         //   getRequestType(function (list) {
         var cellValue = '';
-        $(this).parents("tr").find("td:not(:last-child,:nth-child(3), :first-child)").each(function () {
+        $(this).parents("tr").find("td:not(:last-child, :first-child)").each(function () {
             cellValue = $(this).text();
             var classnm = $(this).attr("class").split(' ')[1];
             var clm = classnm.split("_")[1];
@@ -296,48 +273,36 @@ $(document).ready(function () {
 
             }
 
-        
-        else if ($(this)[0].cellIndex === 2) {
-            preSelectStatus = '<select  class="form-control opt_' + clm + '_' + id + '" name="Status">';
 
-            $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
-                console.log(cellValue + '  vs  ' + value.value);
-                if (cellValue === value.value) {
-                    preSelectStatus += '<option value="' + value.index + '" selected>' + value.value + '</option>';
-                } else {
-                    preSelectStatus += '<option value="' + value.index + '">' + value.value + '</option>';
-                }
+            else if ($(this)[0].cellIndex === 2) {
+                preSelectStatus = '<select  class="form-control opt_' + clm + '_' + id + '" name="Status">';
 
-            });
-            preSelectStatus += '</select >';
-            $(this).html(preSelectStatus);
+                $.each(JSON.parse(localStorage.getItem("RequestStatus")), function (index, value) {
+                    console.log(cellValue + '  vs  ' + value.value);
+                    if (cellValue === value.value) {
+                        preSelectStatus += '<option value="' + value.index + '" selected>' + value.value + '</option>';
+                    } else {
+                        preSelectStatus += '<option value="' + value.index + '">' + value.value + '</option>';
+                    }
 
-        } else {
-            $(this).html('<input type="text" class="form-control input_' + clm + '_' + id + '" value="' + $(this).text() + '">');
+                });
+                preSelectStatus += '</select >';
+                $(this).html(preSelectStatus);
 
-        }
+            } else {
+                $(this).html('<input type="text" class="form-control input_' + clm + '_' + id + '" value="' + $(this).text() + '">');
 
-    });
+            }
 
-       
+        });
+
+
 
 
         $(this).parents("tr").find(".add, .edit").toggle();
 
         //  })
     });
-    // Delete row on delete button click
-
-    //  $(document).on("click", ".delete", function () {
-    // console.log($($(this)[0]));
-    /*  deleteRequest("", "", function (res) {
-          if (res = "ok") {
-              $(this).parents("tr").remove();
-          } else {
-              alert(res);
-          }
-      })*/
-
-    //  });
+   
 });
 
